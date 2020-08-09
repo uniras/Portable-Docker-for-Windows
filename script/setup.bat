@@ -1,10 +1,10 @@
 @echo off
-SET /P ANSWER="セットアップを開始します。よろしいですか (Y/N)？"
+set /P ANSWER="セットアップを開始します。よろしいですか (Y/N)？"
 
 if /i {%ANSWER%}=={y} (goto :yes)
 if /i {%ANSWER%}=={yes} (goto :yes)
 
-EXIT
+exit
 
 :yes
 

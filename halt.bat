@@ -1,2 +1,3 @@
 @echo off
-%~dp0 ssh.bat %HALTCOMMAND%
+call %~dp0\script\config.bat
+%~dp0\ssh.bat %HALTCOMMAND%

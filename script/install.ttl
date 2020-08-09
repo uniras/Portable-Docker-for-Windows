@@ -1,0 +1,42 @@
+expandenv host "localhost:%QEMU_SERIAL_PORT% /nossh /T=1"
+expandenv answerfile "%SCRIPTDIR%\answerfile"
+
+pause 10
+
+connect host
+
+wait "localhost login:"
+
+sendln "root"
+
+wait "localhost:~#"
+
+fileopen fh answerfile 0
+
+sendln "cat << EOF > answerfile"
+
+while 1
+    filereadln fh buf
+    if result=1 then
+        break
+    endif
+    sendln buf
+endwhile
+
+sendln "EOF"
+
+fileclose fh
+
+wait "localhost:~#"
+
+sendln "setup-alpine -e -f answerfile"
+
+wait "continue? [y/N]:"
+
+sendln "y"
+
+wait "localhost:~#"
+
+sendln "poweroff"
+
+waitevent 4

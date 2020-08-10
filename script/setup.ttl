@@ -25,10 +25,13 @@ sendln "cat << EOF > setup.sh"
 
 while 1
     filereadln fh buf
-    if result=1 then
+    if result == 1 then
         break
     endif
-    sendln buf
+    strmatch buf "^#"
+    if result == 0 then
+        sendln buf
+    end if
 endwhile
 
 sendln "EOF"
@@ -39,6 +42,11 @@ wait "localhost:~#"
 
 ;シェルスクリプト実行
 sendln "sh setup.sh"
+
+wait "localhost:~#"
+
+;シェルスクリプト削除
+sendln "rm setup.sh"
 
 wait "localhost:~#"
 

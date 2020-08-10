@@ -1,16 +1,23 @@
+;Alpine Linuxのインストールを行う
+
+;環境変数を展開して設定を反映
 expandenv host "localhost:%QEMU_SERIAL_PORT% /nossh /T=1"
 expandenv answerfile "%SCRIPTDIR%\answerfile"
 
+;念のため10秒待つ
 pause 10
 
+;接続
 connect host
 
 wait "localhost login:"
 
+;rootでログイン
 sendln "root"
 
 wait "localhost:~#"
 
+;ローカルのanswerfileを読み込んでcatコマンドでリモートに書き込み
 fileopen fh answerfile 0
 
 sendln "cat << EOF > answerfile"
@@ -29,14 +36,18 @@ fileclose fh
 
 wait "localhost:~#"
 
+;alpineのsetupスクリプトを起動
 sendln "setup-alpine -e -f answerfile"
 
+;書き込みOKの入力待ちは省略できないっぽいのでマクロで入力
 wait "continue? [y/N]:"
 
 sendln "y"
 
 wait "localhost:~#"
 
+;インストールが終了したのでシャットダウン
 sendln "poweroff"
 
+;Telnet切断 = Qemu終了まで待つ
 waitevent 4

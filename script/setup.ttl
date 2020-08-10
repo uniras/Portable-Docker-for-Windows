@@ -1,16 +1,24 @@
+;インストールしたAlpine LinuxにSSHログインができるように設定・Dockerのインストールを行う
+
+;環境変数を展開して設定を反映
 expandenv host "localhost:%QEMU_SERIAL_PORT% /nossh /T=1"
 expandenv shellscript "%SCRIPTDIR%\setup.sh"
 
+;念のため10秒待つ
 pause 10
 
+;接続
 connect host
 
+;ログインプロンプトの表示を待つ
 wait "localhost login:"
 
+;rootでログイン
 sendln "root"
 
 wait "localhost:~#"
 
+;セットアップ用のシェルスクリプトをローカルから読み込んでcatコマンドでリモートに書き込み
 fileopen fh shellscript 0
 
 sendln "cat << EOF > setup.sh"
@@ -29,10 +37,13 @@ fileclose fh
 
 wait "localhost:~#"
 
+;シェルスクリプト実行
 sendln "sh setup.sh"
 
 wait "localhost:~#"
 
+;セットアップが終わったのでシャットダウン
 sendln "poweroff"
 
+;Telnet切断 = Qemu終了まで待つ
 waitevent 4

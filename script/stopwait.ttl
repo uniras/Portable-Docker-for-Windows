@@ -1,0 +1,10 @@
+;Telnet接続を利用してAlpine Linuxのシャットダウンを待機するマクロ
+
+;環境変数を展開して設定を反映
+expandenv host "localhost:%QEMU_SERIAL_PORT% /nossh /T=1"
+
+;接続
+connect host
+
+;Telnet切断 = Qemu終了まで待つ
+waitevent 4

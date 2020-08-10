@@ -24,7 +24,7 @@ start /min %~dp0\..\%QEMU_PATH% %QEMU_DISPLAY_MODE% %QEMU_SERIAL_OPT% %QEMU_CLOC
 
 echo インストールマクロ 起動...
 
-start /w %~dp0\..\%TERATERM_PATH%\ttpmacro.exe %~dp0\install.ttl
+start /w %~dp0\..\%TERATERM_PATH%\ttpmacro.exe /I %~dp0\install.ttl
 
 echo Qemu再起動...
 
@@ -32,7 +32,7 @@ start /min %~dp0\..\%QEMU_PATH% %QEMU_DISPLAY_MODE% %QEMU_SERIAL_OPT% %QEMU_CLOC
 
 echo セットアップマクロ 起動...
 
-start /w %~dp0\..\%TERATERM_PATH%\ttpmacro.exe %~dp0\setup.ttl
+start /w %~dp0\..\%TERATERM_PATH%\ttpmacro.exe /I %~dp0\setup.ttl
 
 echo セットアップが終了しました
 

@@ -6,5 +6,8 @@ expandenv host "localhost:%QEMU_SERIAL_PORT% /nossh /T=1"
 ;接続
 connect host
 
+;ターミナル非表示
+showtt -1
+
 ;Telnet切断 = Qemu終了まで待つ
 waitevent 4

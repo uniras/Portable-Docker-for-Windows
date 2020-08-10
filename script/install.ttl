@@ -4,6 +4,9 @@
 expandenv host "localhost:%QEMU_SERIAL_PORT% /nossh /T=1"
 expandenv answerfile "%SCRIPTDIR%\answerfile"
 
+;プロンプト
+prompt = "localhost:~#"
+
 ;念のため10秒待つ
 pause 10
 
@@ -15,7 +18,7 @@ wait "localhost login:"
 ;rootでログイン
 sendln "root"
 
-wait "localhost:~#"
+wait prompt
 
 ;ローカルのanswerfileを読み込んでcatコマンドでリモートに書き込み
 fileopen fh answerfile 0
@@ -34,7 +37,7 @@ sendln "EOF"
 
 fileclose fh
 
-wait "localhost:~#"
+wait prompt
 
 ;alpineのsetupスクリプトを起動
 sendln "setup-alpine -e -f answerfile"
@@ -44,7 +47,7 @@ wait "continue? [y/N]:"
 
 sendln "y"
 
-wait "localhost:~#"
+wait prompt
 
 ;インストールが終了したのでシャットダウン
 sendln "poweroff"

@@ -4,7 +4,7 @@
 # Use US layout with US variant
 KEYMAPOPTS="us us"
 
-# Set hostname to host.docker.internal
+# Set hostname to localhost
 HOSTNAMEOPTS="-n localhost"
 
 # Contents of /etc/network/interfaces
@@ -26,8 +26,8 @@ TIMEZONEOPTS="-z Asia/Tokyo"
 #PROXYOPTS="http://webproxy:8080"
 PROXYOPTS="none"
 
-# Add a random mirror
-APKREPOSOPTS="-r"
+# Add first mirror on the list (normally a CDN)
+APKREPOSOPTS="-1"
 
 # Install Openssh
 SSHDOPTS="-c openssh"
@@ -41,4 +41,3 @@ DISKOPTS="-m sys /dev/sda"
 # Setup in /media/sdb1
 #LBUOPTS="/media/sdb1"
 #APKCACHEOPTS="/media/sdb1/cache"
-

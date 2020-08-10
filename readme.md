@@ -33,8 +33,6 @@ halt.batはssh経由でLinuxをシャットダウンするコマンドを送信�
  - halt.bat　SSH経由でLinuxとQemuをシャットダウンします
  - ssh.bat　SSHを起動してLinuxに接続します。
  - start.bat　Qemuを起動してLinuxをブートします
- - startwait.bat　TeraTermマクロを利用してLinuxがブート中の場合はLinuxのブート完了まで待機します。ブート済みの場合はすぐに終了します。
- - stopwait.bat　TeraTermマクロを利用してLinuxとQemuが正常にシャットダウンされるまで待機します。このバッチファイルは待機するだけでシャットダウンはしません。
 
 scriptフォルダ
  - config.bat　各種設定を環境変数として設定しています。設定変更する場合はこのファイルを書き換えます。
@@ -42,7 +40,9 @@ scriptフォルダ
  - download.bat　セットアップに必要な各種ソフトウェアをダウンロードします。
  - downloadconfig.bat　ソフトウェアのURLや保存先等を環境変数として設定しています。
  - setup.bat　セットアップを開始します。すでにセットアップが終了している場合でも全て初期化して再度ダウンロード・セットアップしますので注意してください。
-  
+ - startwait.bat　TeraTermマクロを利用してLinuxがブート中の場合はLinuxのブート完了まで待機します。ブート済みの場合はすぐに終了します。
+ - stopwait.bat　TeraTermマクロを利用してLinuxとQemuが正常にシャットダウンされるまで待機します。このバッチファイルは待機するだけでシャットダウンはしません。
+
 ## Smart Screenについて
 
 特に署名とかしていませんので、zipをダウンロードして解凍したbatを実行しようとするとWindowsのsmart screenに引っかかるようです。

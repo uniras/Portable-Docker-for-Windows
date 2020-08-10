@@ -28,6 +28,7 @@ while 1
     if result == 1 then
         break
     endif
+    sendln buf
 endwhile
 
 sendln "EOF"

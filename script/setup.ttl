@@ -28,10 +28,6 @@ while 1
     if result == 1 then
         break
     endif
-    strmatch buf "^#"
-    if result == 0 then
-        sendln buf
-    end if
 endwhile
 
 sendln "EOF"

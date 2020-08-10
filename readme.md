@@ -26,6 +26,12 @@ dockerconsole.batはQemuを起動し、Linuxの起動を待ってDocker CLIを�
 
 halt.batはssh経由でLinuxをシャットダウンするコマンドを送信してLinux/Qemuを終了します。
 
+## Smart Screenについて
+
+特に署名とかしていませんので、zipをダウンロードして解凍したbatを実行しようとするとWindowsのsmart screenに引っかかるようです。
+
+自分が作ったスクリプト部分は全てソース丸見えなので変なコードとかは仕込んでいませんが、気になる人は自分で解析するか手動でインストールしてください。
+
 ## 使用ソフトウェア等
 
 ### Alpine Linux

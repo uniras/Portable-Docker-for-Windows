@@ -1,7 +1,7 @@
 @echo off
 echo Linux‚ğ‹N“®‚µ‚Ä‚¢‚Ü‚·B‚µ‚Î‚ç‚­‚¨‘Ò‚¿‚­‚¾‚³‚¢...
-call %~dp0\start.bat
-call %~dp0\script\startwait.bat
+call "%~dp0\start.bat"
+call "%~dp0\script\startwait.bat"
 
 if errorlevel 0 goto start
 
@@ -13,6 +13,6 @@ exit
 
 :start
 
-call %~dp0\script\dockerconfig.bat
+call "%~dp0\script\dockerconfig.bat"
 
 cmd

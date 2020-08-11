@@ -7,12 +7,13 @@ set DOCKERCLI_URL="https://github.com/StefanScherer/docker-cli-builder/releases/
 set DOCKERCMP_URL="https://github.com/docker/compose/releases/download/1.26.2/docker-compose-Windows-x86_64.exe"
 
 :各種ソフトウェアのパス
-set ALPINE_DIR=apps\alpine
-set QEMU_DIR=apps\qemu
-set UNIEXT_DIR=apps\uniext
-set TERATERM_DIR=apps\teraterm
-set DOCKERCLI_DIR=apps\docker
-set DOCKERCMP_DIR=apps\docker
+set APP_DIR=app
+set ALPINE_DIR=%APP_DIR%\alpine
+set QEMU_DIR=%APP_DIR%\qemu
+set UNIEXT_DIR=%APP_DIR%\uniext
+set TERATERM_DIR=%APP_DIR%\teraterm
+set DOCKERCLI_DIR=%APP_DIR%\docker
+set DOCKERCMP_DIR=%APP_DIR%\docker
 
 :各種ソフトウェアのファイル名
 set ALPINE_FILE=alpine.iso
@@ -25,3 +26,4 @@ set DOCKERCMP_FILE=docker-compose.exe
 :解凍後のフォルダ名
 set UNIEXT_PATH=%UNIEXT_DIR%\UniExtract
 set TERATERM_PATH=%TERATERM_DIR%\teraterm-4.105
+set QEMU_PATH=%QEMU_DIR%

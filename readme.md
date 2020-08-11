@@ -10,7 +10,9 @@ Portable Docker for Windows(PDW)はWindows上でQemuを利用した管理者権�
 
 ## インストール方法
 
-git cloneまたはzipファイルを利用したいUSBメモリに展開後、scriptフォルダ内のsetup.batをダブルクリックします。
+git cloneまたは右上のCodeボタンを押して出てくるメニューからDownload ZIPをクリックしてzipファイルをダウンロードします。
+
+cloneしたファイルまたは展開したzipファイルを利用したいUSBメモリにコピー後、setup.batをダブルクリックします。
 
 使用するソフトウェアのダウンロードから解凍・セットアップまですべて自動で行います。
 
@@ -22,6 +24,8 @@ git cloneまたはzipファイルを利用したいUSBメモリに展開後、sc
 
 インストール後、start.batをダブルクリックするとQemuを起動します。しばらく(1～2分くらい)後にssh.batをダブルクリックしてssh接続するとssh経由でLinuxを操作することができます。
 
+ユーザー名はroot、パスワード無しの設定になっています。
+
 dockerconsole.batはQemuを起動し、Linuxの起動を待ってDocker CLIを使える状態でコマンドプロンプトを起動します。
 
 halt.batはssh経由でLinuxをシャットダウンするコマンドを送信してLinux/Qemuを終了します。
@@ -29,10 +33,11 @@ halt.batはssh経由でLinuxをシャットダウンするコマンドを送信�
 ## 各種スクリプトファイルの説明
 
 ルートフォルダ
- - dockerconsole.bat　Qemuを起動し、Linuxのブートを待ってDocker CLIが使える状態でコマンドプロンプトを起動します
- - halt.bat　SSH経由でLinuxとQemuをシャットダウンします
- - ssh.bat　SSHを起動してLinuxに接続します。
- - start.bat　Qemuを起動してLinuxをブートします
+ - dockerconsole.bat　Qemuを起動し、Linuxのブートを待ってDocker CLIが使える状態でコマンドプロンプトを起動します。
+ - halt.bat　SSH経由でLinuxとQemuをシャットダウンします。
+ - setup.bat セットアップを開始します。scriptフォルダ内のsetup.batを呼び出しているだけです。セットアップ完了後に自己削除します。
+ - ssh.bat　SSHを起動してLinuxに接続します。コマンドラインでssh.batの後にコマンドを入力するとそのコマンドをSSHを通じてLinux上で実行します。
+ - start.bat　Qemuを起動してLinuxをブートします。
 
 scriptフォルダ
  - config.bat　各種設定を環境変数として設定しています。設定変更する場合はこのファイルを書き換えます。
@@ -42,6 +47,13 @@ scriptフォルダ
  - setup.bat　セットアップを開始します。すでにセットアップが終了している場合でも全て初期化して再度ダウンロード・セットアップしますので注意してください。
  - startwait.bat　TeraTermマクロを利用してLinuxがブート中の場合はLinuxのブート完了まで待機します。ブート済みの場合はすぐに終了します。
  - stopwait.bat　TeraTermマクロを利用してLinuxとQemuが正常にシャットダウンされるまで待機します。このバッチファイルは待機するだけでシャットダウンはしません。
+
+app\Appinfoフォルダ
+ - appinfo.ini  PortableAppsランチャーで各種スクリプトをソフトウェア一覧に表示するための設定ファイルです。
+
+## アンインストール方法
+
+USBメモリをフォーマットするか、スクリプト等をフォルダごと削除してください。
 
 ## Smart Screenについて
 

@@ -1,5 +1,7 @@
+call "%~dp0\downloadconfig.bat"
+
 :QEMUの実行ファイルのパス
-set QEMU_PATH=apps\qemu\qemu-system-x86_64.exe
+set QEMU_EXE_PATH=%QEMU_PATH%\qemu-system-x86_64.exe
 
 :QEMUのディスプレイモード
 :set QEMU_DISPLAY_MODE=-display sdl
@@ -24,12 +26,12 @@ set QEMU_HDD_PATH=Linux.qcow2
 :初期化時のHDDファイルの最大サイズ
 set QEMU_HDD_DEF_SIZE=10G
 
-:isoファイルのパス
-set QEMU_ISO_PATH=apps\alpine\Alpine.iso
+:ISOファイルのパス
+set QEMU_ISO_PATH=%ALPINE_DIR%\Alpine.iso
 
 :SSHのパス
 set SSH_PATH=ssh.exe
-:set SSH_PATH=%APPDIR%\git\usr\bin\ssh.exe
+:set SSH_PATH=%~dp0\%APP_DIR%\git\usr\bin\ssh.exe
 
 :ネットワーク関係のオプション設定
 set QEMU_NET_OPTION=user
@@ -49,14 +51,11 @@ set SSH_USERNAME=root
 set SSH_PORT=22
 
 :SSH鍵認証関係オプション
-:set SSH_KEYOPT=-i %HOME%\.ssh\id_rsa
+:set SSH_KEYOPT=-i "%USERPROFILE%\.ssh\id_rsa"
 set SSH_KEYOPT=
 
 :シャットダウンコマンド
 set HALTCOMMAND=poweroff
 
-:ベースフォルダ
-set BASEDIR=%~dp0\..
-
-:スクリプトフォルダ
+:スクリプトフォルダ(Teratermマクロ用)
 set SCRIPTDIR=%~dp0

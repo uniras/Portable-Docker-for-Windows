@@ -1,32 +1,32 @@
-call %~dp0\downloadconfig.bat
+call "%~dp0\downloadconfig.bat"
 
 :フォルダ作成
 echo フォルダ作成...
-mkdir %~dp0\..\%ALPINE_DIR%
-mkdir %~dp0\..\%QEMU_DIR%
-mkdir %~dp0\..\%UNIEXT_DIR%
-mkdir %~dp0\..\%TERATERM_DIR%
-mkdir %~dp0\..\%DOCKERCLI_DIR%
-:mkdir %~dp0\..\%DOCKERCMP_DIR%
+mkdir "%~dp0\..\%ALPINE_DIR%"
+mkdir "%~dp0\..\%QEMU_DIR%"
+mkdir "%~dp0\..\%UNIEXT_DIR%"
+mkdir "%~dp0\..\%TERATERM_DIR%"
+mkdir "%~dp0\..\%DOCKERCLI_DIR%"
+:mkdir "%~dp0\..\%DOCKERCMP_DIR%"
 
 :ダウンロード
 echo Alpine Linx ダウンロード...
-curl -L -o %~dp0\..\%ALPINE_DIR%\%ALPINE_FILE%  %ALPINE_URL%
+curl -L -o "%~dp0\..\%ALPINE_DIR%\%ALPINE_FILE%"  %ALPINE_URL%
 echo Qemu ダウンロード...
-curl -L -o %~dp0\..\%QEMU_DIR%\%QEMU_FILE%  %QEMU_URL%
+curl -L -o "%~dp0\..\%QEMU_DIR%\%QEMU_FILE%"  %QEMU_URL%
 echo Universal Extractor 2 ダウンロード...
-curl -L -o %~dp0\..\%UNIEXT_DIR%\%UNIEXT_FILE%  %UNIEXT_URL%
+curl -L -o "%~dp0\..\%UNIEXT_DIR%\%UNIEXT_FILE%"  %UNIEXT_URL%
 echo Teraterm ダウンロード...
-curl -L -o %~dp0\..\%TERATERM_DIR%\%TERATERM_FILE%  %TERATERM_URL%
+curl -L -o "%~dp0\..\%TERATERM_DIR%\%TERATERM_FILE%"  %TERATERM_URL%
 echo Docker CLI ダウンロード...
-curl -L -o %~dp0\..\%DOCKERCLI_DIR%\%DOCKERCLI_FILE%  %DOCKERCLI_URL%
+curl -L -o "%~dp0\..\%DOCKERCLI_DIR%\%DOCKERCLI_FILE%"  %DOCKERCLI_URL%
 echo Docker-Compose ダウンロード...
-curl -L -o %~dp0\..\%DOCKERCMP_DIR%\%DOCKERCMP_FILE%  %DOCKERCMP_URL%
+curl -L -o "%~dp0\..\%DOCKERCMP_DIR%\%DOCKERCMP_FILE%"  %DOCKERCMP_URL%
 
 :解凍
 echo Universal Extractor 展開...
-tar -xf %~dp0\..\%UNIEXT_DIR%\%UNIEXT_FILE% -C %~dp0\..\%UNIEXT_DIR%
+tar -xf "%~dp0\..\%UNIEXT_DIR%\%UNIEXT_FILE%" -C "%~dp0\..\%UNIEXT_DIR%"
 echo Teraterm 展開...
-tar -xf %~dp0\..\%TERATERM_DIR%\%TERATERM_FILE% -C %~dp0\..\%TERATERM_DIR%
+tar -xf "%~dp0\..\%TERATERM_DIR%\%TERATERM_FILE%" -C "%~dp0\..\%TERATERM_DIR%"
 echo Qemu 展開...
-%~dp0\..\%UNIEXT_PATH%\bin\x86\7z.exe x -y -o%~dp0\..\%QEMU_DIR%\ %~dp0\..\%QEMU_DIR%\%QEMU_FILE% 
+"%~dp0\..\%UNIEXT_PATH%\bin\x86\7z.exe" x -y -o"%~dp0\..\%QEMU_DIR%\" "%~dp0\..\%QEMU_DIR%\%QEMU_FILE%" 

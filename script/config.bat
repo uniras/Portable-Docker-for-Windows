@@ -31,7 +31,7 @@ set QEMU_ISO_PATH=%ALPINE_DIR%\Alpine.iso
 
 :SSHのパス
 set SSH_PATH=ssh.exe
-:set SSH_PATH=%~dp0\%APP_DIR%\git\usr\bin\ssh.exe
+:set SSH_PATH="%~dp0\%APP_DIR%\git\usr\bin\ssh.exe"
 
 :ネットワーク関係のオプション設定
 set QEMU_NET_OPTION=user

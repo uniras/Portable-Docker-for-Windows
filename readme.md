@@ -13,7 +13,7 @@ Portable Docker for Windows(PDW)はWindows上でQemuを利用した管理者権�
 コマンドプロンプトを開き、cdコマンドやドライブの移動でインストールしたいフォルダをカレントディレクトリにした後、以下のコマンドを実行します。手入力は困難なので、下のコマンドをコピーし、コマンドプロンプト上で右クリックして貼り付けましょう。
 
 ```
-set QEMU_HDD_DEF_SIZE=10G & curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip & tar -xf pdw.zip -C .\ & move .\Portable-Docker-for-Windows-master .\PDW & del /q .\pdw.zip & cd .\PDW & .\setup.bat
+set QEMU_HDD_DEF_SIZE=10G & curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip & tar -xf pdw.zip -C .\ & move .\Portable-Docker-for-Windows-master .\PDW & del /q .\pdw.zip & cd .\PDW & .\script\setup.bat
 ```
 
 使用するソフトウェアのダウンロードから解凍・セットアップまですべて自動で行います。
@@ -23,6 +23,16 @@ set QEMU_HDD_DEF_SIZE=10G & curl -L -o .\pdw.zip https://github.com/uniras/Porta
 デフォルトでは仮想HDDの容量は10GBで作成されますので、足りないと思う場合は上記コマンド内のQEMU_HDD_DEF_SIZEの値を変更してください。
 
 後で容量を増やすことはできるようですが、ちょっと面倒です。
+
+### PortableGitを使う場合
+
+Windows10が古くcurlやtarが無いまたは信条があり使いたくないなどの場合には[PortableGit(Git for Windows)](https://github.com/git-for-windows/git/releases/)を使う方法があります。
+
+あらかじめPortableGit内のusr\bin(unzip用)とmingw64\bin(curl用)にパスを通しておいた上で以下のコマンドを実行します。
+
+```
+set QEMU_HDD_DEF_SIZE=10G & curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip & unzip pdw.zip -d .\ & move .\Portable-Docker-for-Windows-master .\PDW & del /q .\pdw.zip & cd .\PDW & .\script\setup.bat
+```
 
 ## 使用方法
 
@@ -63,7 +73,7 @@ USBメモリをフォーマットするか、スクリプト等をフォルダ�
 
 ~~特に署名とかしていませんので、zipをダウンロードして解凍したbatを実行しようとするとWindowsのsmart screenに引っかかるようです。~~~
 
-curlコマンドでダウンロードしたzipはSmart Screenの対象外になる模様(~~それでいいのかMSよ…~~)
+curlコマンドでダウンロードしたzipファイルはSmart Screenの対象外になる模様(~~それでいいのかMSよ…~~)
 
 ## 使用ソフトウェア等
 

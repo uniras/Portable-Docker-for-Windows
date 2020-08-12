@@ -4,6 +4,7 @@ echo curlプログラムの存在確認...
 where curl
 if %ERRORLEVEL% NEQ 0 (
     echo curlが見つからないためセットアップを続行できません。
+    pause
     exit -1
 )
 
@@ -47,6 +48,7 @@ if %ERRORLEVEL% NEQ 0 (
 where %EXPAND_CMD%
 if %ERRORLEVEL% NEQ 0 (
     echo 展開プログラムが見つからないためセットアップを続行できません。
+    pause
     exit -1
 )
 

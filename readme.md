@@ -26,14 +26,16 @@ set QEMU_HDD_DEF_SIZE=10G & curl -L -o .\pdw.zip https://github.com/uniras/Porta
 
 後で容量を増やすことはできるようですが、ちょっと面倒です。
 
-### PortableGitを使う場合
+### PortableGitを手動でダウンロードする場合
 
-Windows10が古くcurlやtarが無いまたは信条があり使いたくないなどの場合には[PortableGit(Git for Windows)](https://github.com/git-for-windows/git/releases/)を使う方法があります。
+Windows10が古くcurlが無いまたは信条があり使いたくないなどの場合には[PortableGit(Git for Windows)](https://github.com/git-for-windows/git/releases/)をあらかじめダウンロードしておく方法があります。
 
-あらかじめPortableGit内のusr\bin(unzip用)とmingw64\bin(curl用)にパスを通しておいた上でインストールしたいフォルダにカレントディレクトリを移動して以下のコマンドを実行します。
+PortableGit-(バージョン)-64-bit.7z.exeをダウンロードしてPortableGit.exeにリネームし、インストールしたいフォルダに移動しておきます。
+
+あとはコマンドプロンプトを開き、PortableGit.exeを置いたインストールしたいフォルダにカレントディレクトリを移動して以下のコマンドを実行します。
 
 ```
-set QEMU_HDD_DEF_SIZE=10G & curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip & unzip pdw.zip -d .\ & move .\Portable-Docker-for-Windows-master .\PDW & del /q .\pdw.zip & cd .\PDW & .\script\setup.bat
+set QEMU_HDD_DEF_SIZE=10G & start /w PortableGit.exe -o.\PDW\app\PortableGit -y & .\PDW\app\PortableGit\mingw64\bin\curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip & unzip pdw.zip -d .\ & move .\Portable-Docker-for-Windows-master\* .\PDW & move .\Portable-Docker-for-Windows-master\script .\PDW & rmdir .\Portable-Docker-for-Windows-master\ & del /q .\pdw.zip & cd .\PDW & .\script\setup.bat
 ```
 
 ## 使用方法
@@ -102,17 +104,21 @@ SSH/Telnet対応のターミナルソフトウェアです。このソフトウ�
 
 WindowsホストからDockerコマンドを実行するのに使います。Docker CLIは公式では自分でビルドする必要がありますが、(Chocolatey向けに？)ビルド済みバイナリを公開している人がいるのでそれをダウンロードします。Docker-Composeは公式でビルド済みバイナリが公開されています。
 
+### PortableGit
+
+gitをWindowsで使うためのプログラム群です。gitはもちろん、unix系コマンドが大量に入っておりWindowsで使えるようになるので便利です。ここではダウンロード用にcurlとzipファイルの展開用にunzipを使っています。
+
 ### cUrl
 
-上記の各種ソフトウェアのダウンロードに使います。最近のWindows10には標準で入っています。
+上記の各種ソフトウェアのダウンロードに使います。最近のWindows10には標準で入っていますが、PortableGitのダウンロード以外ではPortableGitの方を使います。
 
-### tar
+### tar(現在は使っていません)
 
-ダウンロード後の各種zipファイルの解凍に使います(なぜかWindows10標準のtarはzipファイルの解凍ができます、そのかわりunzipはありません)。最近のWindows10には標準で入っています。
+~~ダウンロード後の各種zipファイルの解凍に使います(なぜかWindows10標準のtarはzipファイルの解凍ができます、そのかわりunzipはありません)。最近のWindows10には標準で入っています。~~
 
 ### SSHクライアント
 
-セットアップ完了後のLinuxの操作・コマンド送信に使います。最近のWindows10には標準で入っています。
+セットアップ完了後のLinuxの操作・コマンド送信に使います。最近のWindows10には標準で入っていますが、デフォルトではPortableGitに入っている方を使うように設定されています。
 
 ## セキュリティ
 

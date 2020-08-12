@@ -14,7 +14,7 @@ call "%~dp0\config.bat"
 
 call "%~dp0\download.bat"
 
-:初期化時のHDDファイルの最大サイズ(デフォルト値)
+: 初期化時のHDDファイルの最大サイズ(デフォルト値)
 if not defined QEMU_HDD_DEF_SIZE (
     set QEMU_HDD_DEF_SIZE=10G
 )

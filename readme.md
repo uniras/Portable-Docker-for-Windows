@@ -49,7 +49,6 @@ halt.batはssh経由でLinuxをシャットダウンするコマンドを送信�
 ルートフォルダ
  - dockerconsole.bat　Qemuを起動し、Linuxのブートを待ってDocker CLIが使える状態でコマンドプロンプトを起動します。
  - halt.bat　SSH経由でLinuxとQemuをシャットダウンします。
- - setup.bat セットアップを開始します。scriptフォルダ内のsetup.batを呼び出しているだけです。セットアップ完了後に自己削除します。
  - ssh.bat　SSHを起動してLinuxに接続します。コマンドラインでssh.batの後にコマンドを入力するとそのコマンドをSSHを通じてLinux上で実行します。
  - start.bat　Qemuを起動してLinuxをブートします。
 

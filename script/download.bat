@@ -11,7 +11,9 @@ if %ERRORLEVEL% NEQ 0 (
 : PortableGitダウンロード・インストール
 if not exist "%~dp0\..\%GIT_DIR%" (
     mkdir "%~dp0\..\%GIT_DIR%"
+    echo PortableGit ダウンロード...
     curl -L -o "%~dp0\..\%GIT_DIR%\%GIT_FILE%"  %GIT_URL%
+    echo PortableGit 展開...
     start /w "" "%~dp0\..\%GIT_DIR%\%GIT_FILE%" -o"%~dp0\%GIT_DIR%" -y
 )
 
@@ -25,7 +27,7 @@ mkdir "%~dp0\..\%DOCKERCLI_DIR%"
 : mkdir "%~dp0\..\%DOCKERCMP_DIR%"
 
 : ダウンロード
-echo Alpine Linx ダウンロード...
+echo Alpine Linux ダウンロード...
 curl -L -o "%~dp0\..\%ALPINE_DIR%\%ALPINE_FILE%"  %ALPINE_URL%
 echo Qemu ダウンロード...
 curl -L -o "%~dp0\..\%QEMU_DIR%\%QEMU_FILE%"  %QEMU_URL%

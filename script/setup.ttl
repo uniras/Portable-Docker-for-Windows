@@ -3,9 +3,8 @@
 ;環境変数を展開して設定を反映
 expandenv host "localhost:%QEMU_SERIAL_PORT% /nossh /T=1"
 expandenv shellscript "%SCRIPTDIR%\setup.sh"
-
-;プロンプト
-prompt = "localhost:~#"
+expandenv loginprompt "%LINUX_SETUP_HOSTNAME% login:"
+expandenv prompt "%LINUX_SETUP_HOSTNAME%:"
 
 ;念のため10秒待つ
 pause 10
@@ -14,7 +13,7 @@ pause 10
 connect host
 
 ;ログインプロンプトの表示を待つ
-wait "localhost login:"
+wait loginprompt
 
 ;rootでログイン
 sendln "root"

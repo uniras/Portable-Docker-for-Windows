@@ -27,3 +27,7 @@ set DOCKERCMP_FILE=docker-compose.exe
 set UNIEXT_PATH=%UNIEXT_DIR%\UniExtract
 set TERATERM_PATH=%TERATERM_DIR%\teraterm-4.105
 set QEMU_PATH=%QEMU_DIR%
+
+:Windows標準外のcurl tarを使う場合はここでパスを通す(下記は解凍したPortableGitをappフォルダに入れた場合にはPortableGitのcurl unzip sshを使うようにする設定)
+set GIT_PATH=%APP_DIR%\PortableGit
+set PATH=%~dp0\..\%GIT_PATH%\bin;%~dp0\..\%GIT_PATH%\usr\bin;%~dp0\..\%GIT_PATH%\mingw64\bin;%~dp0\..\%GIT_PATH%\mingw32\bin;%PATH%

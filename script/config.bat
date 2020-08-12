@@ -31,7 +31,6 @@ set QEMU_ISO_PATH=%ALPINE_DIR%\Alpine.iso
 
 :SSHのパス
 set SSH_PATH=ssh.exe
-:set SSH_PATH="%~dp0\%APP_DIR%\git\usr\bin\ssh.exe"
 
 :ネットワーク関係のオプション設定
 set QEMU_NET_OPTION=user
@@ -56,6 +55,14 @@ set SSH_KEYOPT=
 
 :シャットダウンコマンド
 set HALTCOMMAND=poweroff
+
+:ホスト名
+:Linuxインストール時のホスト名(Linux ISOファイルからの起動でプロンプトのホスト名がlocalhostではない場合にマクロが正常に動かないので変更します)
+set LINUX_INSTALL_HOSTNAME=localhost
+:Linuxインストール後のホスト名(インストール時にホスト名の設定を変更した場合はこちらも変更しないとマクロが正常に動きません)
+set LINUX_SETUP_HOSTNAME=localhost
+:Linuxのホスト名(セットアップ終了後にホスト名を変更した場合はこちらも変更しないとマクロが正常に動きません)
+set LINUX_HOSTNAME=localhost
 
 :スクリプトフォルダ(Teratermマクロ用)
 set SCRIPTDIR=%~dp0

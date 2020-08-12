@@ -1,5 +1,12 @@
 call "%~dp0\downloadconfig.bat"
 
+echo curlプログラムの存在確認...
+where curl
+if %ERRORLEVEL% NEQ 0 (
+    echo curlが見つからないためセットアップを続行できません。
+    exit -1
+)
+
 :フォルダ作成
 echo フォルダ作成...
 mkdir "%~dp0\..\%ALPINE_DIR%"
@@ -23,10 +30,30 @@ curl -L -o "%~dp0\..\%DOCKERCLI_DIR%\%DOCKERCLI_FILE%"  %DOCKERCLI_URL%
 echo Docker-Compose ダウンロード...
 curl -L -o "%~dp0\..\%DOCKERCMP_DIR%\%DOCKERCMP_FILE%"  %DOCKERCMP_URL%
 
-:解凍
+:ダウンロードしたファイルの展開
+:PATHにunzipがあればunzipを使い、なければWindow10標準のtarを使う(Window10のtarのzip解凍はWindow10独自機能の模様)
+echo 展開プログラムの存在確認...
+set EXPAND_CMD=unzip
+set EXPAND_OPT=
+set EXPAND_DIR_OPT=-d
+
+where %EXPAND_CMD%
+if %ERRORLEVEL% NEQ 0 (
+    set EXPAND_CMD=tar
+    set EXPAND_OPT=-xf
+    set EXPAND_DIR_OPT=-C
+)
+
+where %EXPAND_CMD%
+if %ERRORLEVEL% NEQ 0 (
+    echo 展開プログラムが見つからないためセットアップを続行できません。
+    exit -1
+)
+
+echo %EXPAND_CMD%を使います。
 echo Universal Extractor 展開...
-tar -xf "%~dp0\..\%UNIEXT_DIR%\%UNIEXT_FILE%" -C "%~dp0\..\%UNIEXT_DIR%"
+%EXPAND_CMD% %EXPAND_OPT% "%~dp0\..\%UNIEXT_DIR%\%UNIEXT_FILE%" %EXPAND_DIR_OPT% "%~dp0\..\%UNIEXT_DIR%"
 echo Teraterm 展開...
-tar -xf "%~dp0\..\%TERATERM_DIR%\%TERATERM_FILE%" -C "%~dp0\..\%TERATERM_DIR%"
+%EXPAND_CMD% %EXPAND_OPT% "%~dp0\..\%TERATERM_DIR%\%TERATERM_FILE%" %EXPAND_DIR_OPT% "%~dp0\..\%TERATERM_DIR%"
 echo Qemu 展開...
 "%~dp0\..\%UNIEXT_PATH%\bin\x86\7z.exe" x -y -o"%~dp0\..\%QEMU_DIR%\" "%~dp0\..\%QEMU_DIR%\%QEMU_FILE%" 

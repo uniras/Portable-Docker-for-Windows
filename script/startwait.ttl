@@ -2,6 +2,8 @@
 
 ;環境変数を展開して設定を反映
 expandenv host "localhost:%QEMU_SERIAL_PORT% /nossh /T=1"
+expandenv loginprompt "%LINUX_HOSTNAME% login:"
+expandenv prompt "%LINUX_HOSTNAME%:"
 
 ;Telnet接続
 connect host
@@ -15,11 +17,11 @@ endif
 ;ターミナル非表示
 showtt -1
 
-;ログイン済みの場合、なぜか一度エンターを送らないとプロンプトが表示されないようなので送信
+;すでにログイン済みの場合、なぜか一度エンターを送らないとプロンプトが表示されないようなので送信
 sendln ""
 
 ;ログインプロンプトまたはコマンドプロンプトの表示を待つ
-wait "localhost login:" "localhost:~#"
+wait loginprompt prompt
 
 ;切断
 disconnect 0

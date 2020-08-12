@@ -28,7 +28,7 @@ set QEMU_HDD_DEF_SIZE=10G & curl -L -o .\pdw.zip https://github.com/uniras/Porta
 
 Windows10が古くcurlやtarが無いまたは信条があり使いたくないなどの場合には[PortableGit(Git for Windows)](https://github.com/git-for-windows/git/releases/)を使う方法があります。
 
-あらかじめPortableGit内のusr\bin(unzip用)とmingw64\bin(curl用)にパスを通しておいた上で以下のコマンドを実行します。
+あらかじめPortableGit内のusr\bin(unzip用)とmingw64\bin(curl用)にパスを通しておいた上でインストールしたいフォルダにカレントディレクトリを移動して以下のコマンドを実行します。
 
 ```
 set QEMU_HDD_DEF_SIZE=10G & curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip & unzip pdw.zip -d .\ & move .\Portable-Docker-for-Windows-master .\PDW & del /q .\pdw.zip & cd .\PDW & .\script\setup.bat
@@ -70,7 +70,7 @@ USBメモリをフォーマットするか、スクリプト等をフォルダ�
 
 ## Smart Screenについて
 
-~~特に署名とかしていませんので、zipをダウンロードして解凍したbatを実行しようとするとWindowsのsmart screenに引っかかるようです。~~~
+~~特に署名とかしていませんので、zipをダウンロードして解凍したbatを実行しようとするとWindowsのsmart screenに引っかかるようです。~~
 
 curlコマンドでダウンロードしたzipファイルはSmart Screenの対象外になる模様(~~それでいいのかMSよ…~~)
 

@@ -10,13 +10,17 @@ Portable Docker for Windows(PDW)はWindows上でQemuを利用した管理者権�
 
 ## インストール方法
 
-git cloneまたは右上のCodeボタンを押して出てくるメニューからDownload ZIPをクリックしてzipファイルをダウンロードします。
+コマンドプロンプトを開き、cdコマンドやドライブの移動でインストールしたいフォルダをカレントディレクトリにした後、以下のコマンドを実行します。手入力は困難なので、下のコマンドをコピーし、コマンドプロンプト上で右クリックして貼り付けましょう。
 
-cloneしたファイルまたは展開したzipファイルを利用したいUSBメモリにコピー後、setup.batをダブルクリックします。
+```
+set QEMU_HDD_DEF_SIZE=10G & curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip & tar -xf pdw.zip -C .\ & move .\Portable-Docker-for-Windows-master .\PDW & del ./pdw.zip & cd .\PDW & .\setup.bat
+```
 
 使用するソフトウェアのダウンロードから解凍・セットアップまですべて自動で行います。
 
-デフォルトでは仮想HDDの容量は10GBで作成されますので、足りないと思う場合はscriptフォルダにあるconfig.batのQEMU_HDD_DEF_SIZEの値を変更してください。
+関連ファイルはすべて上記コマンドを実行したカレントディレクトリ内のPDWディレクトリにインストールされます。
+
+デフォルトでは仮想HDDの容量は10GBで作成されますので、足りないと思う場合は上記コマンド内のQEMU_HDD_DEF_SIZEの値を変更してください。
 
 後で容量を増やすことはできるようですが、ちょっと面倒です。
 
@@ -57,9 +61,9 @@ USBメモリをフォーマットするか、スクリプト等をフォルダ�
 
 ## Smart Screenについて
 
-特に署名とかしていませんので、zipをダウンロードして解凍したbatを実行しようとするとWindowsのsmart screenに引っかかるようです。
+~~特に署名とかしていませんので、zipをダウンロードして解凍したbatを実行しようとするとWindowsのsmart screenに引っかかるようです。~~~
 
-自分が作ったスクリプト部分は全てソース丸見えなので変なコードとかは仕込んでいませんが、気になる人は自分で解析するか手動でインストールしてください。
+curlコマンドでダウンロードしたzipはSmart Screenの対象外になる模様(~~それでいいのかMSよ…~~)
 
 ## 使用ソフトウェア等
 

@@ -23,9 +23,6 @@ set QEMU_USE_MEMORY=2048
 :HDDファイルのパス
 set QEMU_HDD_PATH=Linux.qcow2
 
-:初期化時のHDDファイルの最大サイズ
-set QEMU_HDD_DEF_SIZE=10G
-
 :ISOファイルのパス
 set QEMU_ISO_PATH=%ALPINE_DIR%\Alpine.iso
 

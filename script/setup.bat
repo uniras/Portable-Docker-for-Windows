@@ -14,7 +14,13 @@ call "%~dp0\config.bat"
 
 call "%~dp0\download.bat"
 
+:初期化時のHDDファイルの最大サイズ(デフォルト値)
+if not defined QEMU_HDD_DEF_SIZE (
+    set QEMU_HDD_DEF_SIZE=10G
+)
+
 echo HDDイメージ作成...
+echo 最大%QEMU_HDD_DEF_SIZE%Bの設定でHDDイメージを作成します。
 
 "%~dp0\..\%QEMU_PATH%\qemu-img.exe" create -f qcow2 "%~dp0\..\%QEMU_HDD_PATH%" %QEMU_HDD_DEF_SIZE%
 

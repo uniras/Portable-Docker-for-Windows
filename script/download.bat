@@ -9,7 +9,7 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 : PortableGitダウンロード・インストール
-if not exist %GIT_DIR% (
+if not exist "%~dp0\..\%GIT_DIR%" (
     mkdir "%~dp0\..\%GIT_DIR%"
     curl -L -o "%~dp0\..\%GIT_DIR%\%GIT_FILE%"  %GIT_URL%
     start /w "" "%~dp0\..\%GIT_DIR%\%GIT_FILE%" -o"%~dp0\%GIT_DIR%" -y

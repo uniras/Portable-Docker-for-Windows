@@ -14,8 +14,13 @@ Portable Docker for Windows(PDW)はWindows上でQemuを利用した管理者権�
 
 コマンドプロンプトを開き、cdコマンドやドライブの移動でインストールしたいフォルダをカレントディレクトリにした後、以下のコマンドを実行します。手入力は困難なので、下のコマンドをコピーし、コマンドプロンプト上で右クリックして貼り付けましょう。
 
-```
-set QEMU_HDD_DEF_SIZE=10G & curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip & %windir%\system32\tar -xf pdw.zip -C .\ & del /q .\pdw.zip & cd .\Portable-Docker-for-Windows-master & .\script\setup.bat
+```bat
+set QEMU_HDD_DEF_SIZE=10G^
+ & curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip^
+ & %windir%\system32\tar -xf pdw.zip -C .\^
+ & del /q .\pdw.zip^
+ & cd .\Portable-Docker-for-Windows-master^
+ & .\script\setup.bat
 ```
 
 使用するソフトウェアのダウンロードから解凍・セットアップまですべて自動で行います。
@@ -35,8 +40,14 @@ PortableGit-(バージョン)-64-bit.7z.exeをダウンロードしてPortableGi
 
 あとはコマンドプロンプトを開き、PortableGit.exeを置いたインストールしたいフォルダにカレントディレクトリを移動して以下のコマンドを実行します。
 
-```
-set QEMU_HDD_DEF_SIZE=10G & start /w PortableGit.exe -o.\Portable-Docker-for-Windows-master\app\PortableGit -y & .\Portable-Docker-for-Windows-master\app\PortableGit\mingw64\bin\curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip & .\Portable-Docker-for-Windows-master\app\PortableGit\usr\bin\unzip pdw.zip -d .\ & del /q .\pdw.zip & cd .\Portable-Docker-for-Windows-master & .\script\setup.bat
+```bat
+set QEMU_HDD_DEF_SIZE=10G^
+ & start /w PortableGit.exe -o.\Portable-Docker-for-Windows-master\app\PortableGit -y^
+ & .\Portable-Docker-for-Windows-master\app\PortableGit\mingw64\bin\curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip^
+ & .\Portable-Docker-for-Windows-master\app\PortableGit\usr\bin\unzip pdw.zip -d .\^
+ & del /q .\pdw.zip^
+ & cd .\Portable-Docker-for-Windows-master^
+ & .\script\setup.bat
 ```
 
 ## 使用方法
@@ -52,28 +63,31 @@ halt.batはssh経由でLinuxをシャットダウンするコマンドを送信�
 ## 各種スクリプトファイルの説明
 
 ルートフォルダ
- - dockerconsole.bat　Qemuを起動し、Linuxのブートを待ってDocker CLIが使える状態でコマンドプロンプトを起動します。
- - dockerbash.bat  Qemuを起動し、Linuxのブートを待ってDocker CLIが使える状態でPortableGitのbashを起動します。
- - halt.bat　SSH経由でLinuxとQemuをシャットダウンします。
- - ssh.bat　SSHを起動してLinuxに接続します(scriptフォルダのdockerssh.batを呼び出します)
- - start.bat　Qemuを起動してLinuxをブートします。
+
+- dockerconsole.bat　Qemuを起動し、Linuxのブートを待ってDocker CLIが使える状態でコマンドプロンプトを起動します。
+- dockerbash.bat  Qemuを起動し、Linuxのブートを待ってDocker CLIが使える状態でPortableGitのbashを起動します。
+- halt.bat　SSH経由でLinuxとQemuをシャットダウンします。
+- ssh.bat　SSHを起動してLinuxに接続します(scriptフォルダのdockerssh.batを呼び出します)
+- start.bat　Qemuを起動してLinuxをブートします。
 
 scriptフォルダ
- - config.bat　各種設定を環境変数として設定しています。設定変更する場合はこのファイルを書き換えます。
- - dockerconfig.bat　Docker CLIの動作に必要な環境変数を設定します。
- - dockerssh.bat  SSHを起動してLinuxに接続します。コマンドラインでdockerssh.batの後にコマンドを入力するとそのコマンドをSSHを通じてLinux上で実行します。
- - download.bat　セットアップに必要な各種ソフトウェアをダウンロードします。
- - downloadconfig.bat　ソフトウェアのURLや保存先等を環境変数として設定しています。
- - install.bat  QemuにLnuxのインストール・セットアップを行います。HDDイメージは初期化されます。
- - setup.bat　セットアップを開始します。すでにセットアップが終了している場合でも全て初期化して再度ダウンロード・セットアップしますので注意してください。
- - startwait.bat　TeraTermマクロを利用してLinuxがブート中の場合はLinuxのブート完了まで待機します。ブート済みの場合はすぐに終了します。
- - stopwait.bat　TeraTermマクロを利用してLinuxとQemuが正常にシャットダウンされるまで待機します。このバッチファイルは待機するだけでシャットダウンはしません。
- - setup.sh  AlpineLinuxインストール後に実行するセットアップ用のシェルスクリプトです。Teratermマクロ経由で転送・実行します。
- - *.ttl  Teratermマクロです
- - 拡張子なしファイル  bash用のシェルスクリプトで、同名のバッチファイルを呼び出します。anserfileはAlpineLinuxインストール用の設定ファイルです。
+
+- config.bat　各種設定を環境変数として設定しています。設定変更する場合はこのファイルを書き換えます。
+- dockerconfig.bat　Docker CLIの動作に必要な環境変数を設定します。
+- dockerssh.bat  SSHを起動してLinuxに接続します。コマンドラインでdockerssh.batの後にコマンドを入力するとそのコマンドをSSHを通じてLinux上で実行します。
+- download.bat　セットアップに必要な各種ソフトウェアをダウンロードします。
+- downloadconfig.bat　ソフトウェアのURLや保存先等を環境変数として設定しています。
+- install.bat  QemuにLnuxのインストール・セットアップを行います。HDDイメージは初期化されます。
+- setup.bat　セットアップを開始します。すでにセットアップが終了している場合でも全て初期化して再度ダウンロード・セットアップしますので注意してください。
+- startwait.bat　TeraTermマクロを利用してLinuxがブート中の場合はLinuxのブート完了まで待機します。ブート済みの場合はすぐに終了します。
+- stopwait.bat　TeraTermマクロを利用してLinuxとQemuが正常にシャットダウンされるまで待機します。このバッチファイルは待機するだけでシャットダウンはしません。
+- setup.sh  AlpineLinuxインストール後に実行するセットアップ用のシェルスクリプトです。Teratermマクロ経由で転送・実行します。
+- *.ttl  Teratermマクロです
+- 拡張子なしファイル  bash用のシェルスクリプトで、同名のバッチファイルを呼び出します。anserfileはAlpineLinuxインストール用の設定ファイルです。
 
 app\Appinfoフォルダ
- - appinfo.ini  PortableAppsランチャーで各種スクリプトをソフトウェア一覧に表示するための設定ファイルです。
+
+- appinfo.ini  PortableAppsランチャーで各種スクリプトをソフトウェア一覧に表示するための設定ファイルです。
 
 ## アンインストール方法
 
@@ -134,4 +148,4 @@ USBメモリを刺してQemuを起動している間だけしか動作しない�
 
 ## ライセンス
 
-[NYSL](http://www.kmonos.net/nysl/)です
+[NYSL](http://www.kmonos.net/nysl/)です。

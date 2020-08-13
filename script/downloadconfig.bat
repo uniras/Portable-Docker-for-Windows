@@ -1,7 +1,7 @@
 @echo off
 
 :各種ソフトウェアのURL
-set WINGIT_URL="https://github.com/git-for-windows/git/releases/download/v2.28.0.windows.1/PortableGit-2.28.0-32-bit.7z.exe"
+set WINGIT_URL="https://github.com/git-for-windows/git/releases/download/v2.28.0.windows.1/PortableGit-2.28.0-64-bit.7z.exe"
 set ALPINE_URL="http://dl-cdn.alpinelinux.org/alpine/v3.12/releases/x86_64/alpine-virt-3.12.0-x86_64.iso"
 set QEMU_URL="https://qemu.weilnetz.de/w64/2020/qemu-w64-setup-20200805.exe"
 set UNIEXT_URL="https://github.com/Bioruebe/UniExtract2/releases/download/v2.0.0-rc.2/UniExtractRC2.zip"

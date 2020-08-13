@@ -15,12 +15,13 @@ Portable Docker for Windows(PDW)はWindows上でQemuを利用した管理者権�
 コマンドプロンプトを開き、cdコマンドやドライブの移動でインストールしたいフォルダをカレントディレクトリにした後、以下のコマンドを実行します。手入力は困難なので、下のコマンドをコピーし、コマンドプロンプト上で右クリックして貼り付けましょう。
 
 ```
-set QEMU_HDD_DEF_SIZE=10G & curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip & %windir%\system32\tar -xf pdw.zip -C .\ & move .\Portable-Docker-for-Windows-master .\PDW & del /q .\pdw.zip & cd .\PDW & .\script\setup.bat
+set QEMU_HDD_DEF_SIZE=10G & curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip & %windir%\system32\tar -xf pdw.zip -C .\ & del /q .\pdw.zip & cd .\Portable-Docker-for-Windows-master & .\script\setup.bat
 ```
 
 使用するソフトウェアのダウンロードから解凍・セットアップまですべて自動で行います。
 
-関連ファイルはすべて上記コマンドを実行したカレントディレクトリ内のPDWディレクトリにインストールされます。
+関連ファイルはgithubの仕様の関係で上記コマンドを実行したカレントディレクトリ内のPortable-Docker-for-Windows-masterディレクトリにインストールされます。
+気に入らない場合はインストール後にフォルダ名を変更してください。
 
 デフォルトでは仮想HDDの容量は10GBで作成されますので、足りないと思う場合は上記コマンド内のQEMU_HDD_DEF_SIZEの値を変更してください。
 
@@ -35,7 +36,7 @@ PortableGit-(バージョン)-64-bit.7z.exeをダウンロードしてPortableGi
 あとはコマンドプロンプトを開き、PortableGit.exeを置いたインストールしたいフォルダにカレントディレクトリを移動して以下のコマンドを実行します。
 
 ```
-set QEMU_HDD_DEF_SIZE=10G & start /w PortableGit.exe -o.\PDW\app\PortableGit -y & .\PDW\app\PortableGit\mingw64\bin\curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip & .\PDW\app\PortableGit\usr\bin\unzip pdw.zip -d .\ & move .\Portable-Docker-for-Windows-master\* .\PDW & move .\Portable-Docker-for-Windows-master\script .\PDW & move .\Portable-Docker-for-Windows-master\app\AppInfo .\PDW\app & rmdir .\Portable-Docker-for-Windows-master\app & rmdir .\Portable-Docker-for-Windows-master\ & del /q .\pdw.zip & cd .\PDW & .\script\setup.bat
+set QEMU_HDD_DEF_SIZE=10G & start /w PortableGit.exe -o.\Portable-Docker-for-Windows-master\app\PortableGit -y & .\PDW\app\PortableGit\mingw64\bin\curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip & .\PDW\app\PortableGit\usr\bin\unzip pdw.zip -d .\ & del /q .\pdw.zip & cd .\Portable-Docker-for-Windows-master & .\script\setup.bat
 ```
 
 ## 使用方法
@@ -61,6 +62,7 @@ scriptフォルダ
  - dockerconfig.bat　Docker CLIの動作に必要な環境変数を設定します。
  - download.bat　セットアップに必要な各種ソフトウェアをダウンロードします。
  - downloadconfig.bat　ソフトウェアのURLや保存先等を環境変数として設定しています。
+ - install.bat  QemuにLnuxのインストール・セットアップを行います。HDDイメージは初期化されます。
  - setup.bat　セットアップを開始します。すでにセットアップが終了している場合でも全て初期化して再度ダウンロード・セットアップしますので注意してください。
  - startwait.bat　TeraTermマクロを利用してLinuxがブート中の場合はLinuxのブート完了まで待機します。ブート済みの場合はすぐに終了します。
  - stopwait.bat　TeraTermマクロを利用してLinuxとQemuが正常にシャットダウンされるまで待機します。このバッチファイルは待機するだけでシャットダウンはしません。

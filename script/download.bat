@@ -14,7 +14,7 @@ if not exist "%~dp0\..\%GIT_DIR%" (
     echo PortableGit ダウンロード...
     curl -L -o "%~dp0\..\%GIT_DIR%\%GIT_FILE%"  %GIT_URL%
     echo PortableGit 展開...
-    start /w "" "%~dp0\..\%GIT_DIR%\%GIT_FILE%" -o"%~dp0\%GIT_DIR%" -y
+    start /w "" "%~dp0\..\%GIT_DIR%\%GIT_FILE%" -o"%~dp0\..\%GIT_DIR%" -y
 )
 
 : フォルダ作成

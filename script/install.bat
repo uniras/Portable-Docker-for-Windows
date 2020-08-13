@@ -1,12 +1,12 @@
 call "%~dp0\config.bat"
 
-: åˆæœŸåŒ–æ™‚ã®HDDãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€å¤§ã‚µã‚¤ã‚º(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤)
+: ‰Šú‰»Žž‚ÌHDDƒtƒ@ƒCƒ‹‚ÌÅ‘åƒTƒCƒY(ƒfƒtƒHƒ‹ƒg’l)
 if not defined QEMU_HDD_DEF_SIZE (
     set QEMU_HDD_DEF_SIZE=10G
 )
 
 if exist "%~dp0\..\%QEMU_HDD_PATH%" (
-    set /P ANSWER="HDDã‚¤ãƒ¡ãƒ¼ã‚¸ãŒå­˜åœ¨ã—ã¾ã™ã€‚HDDã‚¤ãƒ¡ãƒ¼ã‚¸å†…ã®ãƒ‡ãƒ¼ã‚¿ã¯ã™ã¹ã¦æ¶ˆåŽ»ã•ã‚Œã¾ã™ãŒã‚ˆã‚ã—ã„ã§ã™ã‹ (Y/N)ï¼Ÿ"
+    set /P ANSWER="HDDƒCƒ[ƒW‚ª‘¶Ý‚µ‚Ü‚·BHDDƒCƒ[ƒW“à‚Ìƒf[ƒ^‚Í‚·‚×‚ÄÁ‹Ž‚³‚ê‚Ü‚·‚ª‚æ‚ë‚µ‚¢‚Å‚·‚© (Y/N)H"
 
     if /i {%ANSWER%}=={y} (goto :formatok)
     if /i {%ANSWER%}=={yes} (goto :formatok)
@@ -16,25 +16,25 @@ if exist "%~dp0\..\%QEMU_HDD_PATH%" (
 
 :formatok
 
-echo HDDã‚¤ãƒ¡ãƒ¼ã‚¸ä½œæˆ...
-echo æœ€å¤§%QEMU_HDD_DEF_SIZE%Bã®è¨­å®šã§HDDã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’ä½œæˆã—ã¾ã™ã€‚
+echo HDDƒCƒ[ƒWì¬...
+echo Å‘å%QEMU_HDD_DEF_SIZE%B‚ÌÝ’è‚ÅHDDƒCƒ[ƒW‚ðì¬‚µ‚Ü‚·B
 
 "%~dp0\..\%QEMU_PATH%\qemu-img.exe" create -f qcow2 "%~dp0\..\%QEMU_HDD_PATH%" %QEMU_HDD_DEF_SIZE%
 
-echo Qemuèµ·å‹•...
+echo Qemu‹N“®...
 
 start /min "Qemu" "%~dp0\..\%QEMU_EXE_PATH%" %QEMU_DISPLAY_MODE% %QEMU_SERIAL_OPT% %QEMU_CLOCK_OPT% -smp 2 -boot d -m %QEMU_USE_MEMORY% -net nic,model=virtio -net %QEMU_NET_OPTION% -hda "%~dp0\..\%QEMU_HDD_PATH%" -cdrom "%~dp0\..\%QEMU_ISO_PATH%"
 
-echo ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ãƒžã‚¯ãƒ­ èµ·å‹•...
+echo ƒCƒ“ƒXƒg[ƒ‹ƒ}ƒNƒ ‹N“®...
 
 "%~dp0\..\%TERATERM_PATH%\ttpmacro.exe" /I "%~dp0\install.ttl"
 
-echo Qemuå†èµ·å‹•...
+echo QemuÄ‹N“®...
 
 start /min "Qemu" "%~dp0\..\%QEMU_EXE_PATH%" %QEMU_DISPLAY_MODE% %QEMU_SERIAL_OPT% %QEMU_CLOCK_OPT% -smp 2 -m %QEMU_USE_MEMORY% -net nic,model=virtio -net %QEMU_NET_OPTION% -hda "%~dp0\..\%QEMU_HDD_PATH%"
 
-echo ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ãƒžã‚¯ãƒ­ èµ·å‹•...
+echo ƒZƒbƒgƒAƒbƒvƒ}ƒNƒ ‹N“®...
 
 "%~dp0\..\%TERATERM_PATH%\ttpmacro.exe" /I "%~dp0\setup.ttl"
 
-echo ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ãŒçµ‚äº†ã—ã¾ã—ãŸ
+echo ƒZƒbƒgƒAƒbƒv‚ªI—¹‚µ‚Ü‚µ‚½

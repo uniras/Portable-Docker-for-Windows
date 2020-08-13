@@ -1,3 +1,4 @@
+@echo off
 call "%~dp0\downloadconfig.bat"
 
 : QEMUの実行ファイルのパス

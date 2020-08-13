@@ -1,3 +1,4 @@
+@echo off
 call "%~dp0\config.bat"
 
 : 初期化時のHDDファイルの最大サイズ(デフォルト値)

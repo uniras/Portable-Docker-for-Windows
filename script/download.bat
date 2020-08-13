@@ -1,3 +1,4 @@
+@echo off
 call "%~dp0\downloadconfig.bat"
 
 echo curlプログラムの存在確認...

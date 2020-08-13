@@ -1,3 +1,4 @@
+@echo off
 call "%~dp0\start.bat"
 
 echo Linux‚ğ‹N“®‚µ‚Ä‚¢‚Ü‚·B‚µ‚Î‚ç‚­‚¨‘Ò‚¿‚­‚¾‚³‚¢...

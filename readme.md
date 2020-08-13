@@ -68,8 +68,9 @@ scriptフォルダ
  - setup.bat　セットアップを開始します。すでにセットアップが終了している場合でも全て初期化して再度ダウンロード・セットアップしますので注意してください。
  - startwait.bat　TeraTermマクロを利用してLinuxがブート中の場合はLinuxのブート完了まで待機します。ブート済みの場合はすぐに終了します。
  - stopwait.bat　TeraTermマクロを利用してLinuxとQemuが正常にシャットダウンされるまで待機します。このバッチファイルは待機するだけでシャットダウンはしません。
+ - setup.sh  AlpineLinuxインストール後に実行するセットアップ用のシェルスクリプトです。Teratermマクロ経由で転送・実行します。
  - *.ttl  Teratermマクロです
- - 拡張子なしファイル  bash用のコマンドで、同名のバッチファイルを呼び出します。anserfileはAlpineLinuxインストール用の設定ファイルです。
+ - 拡張子なしファイル  bash用のシェルスクリプトで、同名のバッチファイルを呼び出します。anserfileはAlpineLinuxインストール用の設定ファイルです。
 
 app\Appinfoフォルダ
  - appinfo.ini  PortableAppsランチャーで各種スクリプトをソフトウェア一覧に表示するための設定ファイルです。

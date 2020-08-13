@@ -1,3 +1,4 @@
+@echo off
 call "%~dp0\config.bat"
 
 set DOCKER_HOST=localhost:2375

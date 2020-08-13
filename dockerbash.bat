@@ -8,7 +8,7 @@ if errorlevel 0 goto start
 
 echo Ú‘±‚É¸”s‚µ‚Ü‚µ‚½BQemu‚ª‹N“®‚µ‚Ä‚¢‚È‚¢‚æ‚¤‚Å‚·B
 
-pause 
+pause
 
 exit
 
@@ -16,4 +16,4 @@ exit
 
 call "%~dp0\script\dockerconfig.bat"
 
-cmd
+bash

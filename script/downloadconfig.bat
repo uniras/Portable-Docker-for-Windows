@@ -1,3 +1,5 @@
+@echo off
+
 :各種ソフトウェアのURL
 set GIT_URL="https://github.com/git-for-windows/git/releases/download/v2.28.0.windows.1/PortableGit-2.28.0-32-bit.7z.exe"
 set ALPINE_URL="http://dl-cdn.alpinelinux.org/alpine/v3.12/releases/x86_64/alpine-virt-3.12.0-x86_64.iso"

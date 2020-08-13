@@ -45,7 +45,7 @@ set QEMU_HDD_DEF_SIZE=10G & start /w PortableGit.exe -o.\Portable-Docker-for-Win
 
 ユーザー名はroot、パスワード無しの設定になっています。
 
-dockerconsole.batはQemuを起動し、Linuxの起動を待ってDocker CLIを使える状態でコマンドプロンプトを起動します。
+dockerconsole.batはQemuを起動し、Linuxの起動を待ってDocker CLIを使える状態でコマンドプロンプトを起動します。Windowsのコマンドプロンプトではなく、PortableGitのbashを使いたい場合はdockerbash.batを起動します。
 
 halt.batはssh経由でLinuxをシャットダウンするコマンドを送信してLinux/Qemuを終了します。
 
@@ -53,19 +53,23 @@ halt.batはssh経由でLinuxをシャットダウンするコマンドを送信�
 
 ルートフォルダ
  - dockerconsole.bat　Qemuを起動し、Linuxのブートを待ってDocker CLIが使える状態でコマンドプロンプトを起動します。
+ - dockerbash.bat  Qemuを起動し、Linuxのブートを待ってDocker CLIが使える状態でPortableGitのbashを起動します。
  - halt.bat　SSH経由でLinuxとQemuをシャットダウンします。
- - ssh.bat　SSHを起動してLinuxに接続します。コマンドラインでssh.batの後にコマンドを入力するとそのコマンドをSSHを通じてLinux上で実行します。
+ - ssh.bat　SSHを起動してLinuxに接続します(scriptフォルダのdockerssh.batを呼び出します)
  - start.bat　Qemuを起動してLinuxをブートします。
 
 scriptフォルダ
  - config.bat　各種設定を環境変数として設定しています。設定変更する場合はこのファイルを書き換えます。
  - dockerconfig.bat　Docker CLIの動作に必要な環境変数を設定します。
+ - dockerssh.bat  SSHを起動してLinuxに接続します。コマンドラインでdockerssh.batの後にコマンドを入力するとそのコマンドをSSHを通じてLinux上で実行します。
  - download.bat　セットアップに必要な各種ソフトウェアをダウンロードします。
  - downloadconfig.bat　ソフトウェアのURLや保存先等を環境変数として設定しています。
  - install.bat  QemuにLnuxのインストール・セットアップを行います。HDDイメージは初期化されます。
  - setup.bat　セットアップを開始します。すでにセットアップが終了している場合でも全て初期化して再度ダウンロード・セットアップしますので注意してください。
  - startwait.bat　TeraTermマクロを利用してLinuxがブート中の場合はLinuxのブート完了まで待機します。ブート済みの場合はすぐに終了します。
  - stopwait.bat　TeraTermマクロを利用してLinuxとQemuが正常にシャットダウンされるまで待機します。このバッチファイルは待機するだけでシャットダウンはしません。
+ - *.ttl  Teratermマクロです
+ - 拡張子なしファイル  bash用のコマンドで、同名のバッチファイルを呼び出します。anserfileはAlpineLinuxインストール用の設定ファイルです。
 
 app\Appinfoフォルダ
  - appinfo.ini  PortableAppsランチャーで各種スクリプトをソフトウェア一覧に表示するための設定ファイルです。
@@ -126,3 +130,7 @@ gitをWindowsで使うためのプログラム群です。gitはもちろん、u
 
 USBメモリを刺してQemuを起動している間だけしか動作しないかつ通常はWindowsファイアウォールやルーターの関係で外部PCからの接続は困難なため、あえてセキュリティよりも利便性を最優先にした構成になっています。
 公開サーバーでは絶対にありえない構成であることは認識しておいてください、またUSBメモリの紛失盗難にも気を付けてください。
+
+## ライセンス
+
+[NYSL](http://www.kmonos.net/nysl/)です

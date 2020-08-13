@@ -10,12 +10,12 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 : PortableGitダウンロード・インストール
-if not exist "%~dp0\..\%WIMGIT_DIR%" (
-    mkdir "%~dp0\..\%WIMGIT_DIR%"
+if not exist "%~dp0\..\%WINGIT_DIR%" (
+    mkdir "%~dp0\..\%WINGIT_DIR%"
     echo PortableGit ダウンロード...
-    curl -L -o "%~dp0\..\%WIMGIT_DIR%\%WINGIT_FILE%"  %GIT_URL%
+    curl -L -o "%~dp0\..\%WINGIT_DIR%\%WINGIT_FILE%"  %WINGIT_URL%
     echo PortableGit 展開...
-    start /w "" "%~dp0\..\%WIMGIT_DIR%\%WINGIT_FILE%" -o"%~dp0\..\%WIMGIT_DIR%" -y
+    start /w "" "%~dp0\..\%WINGIT_DIR%\%WINGIT_FILE%" -o"%~dp0\..\%WINGIT_DIR%" -y
 )
 
 : フォルダ作成

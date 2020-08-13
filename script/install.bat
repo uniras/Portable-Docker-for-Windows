@@ -6,14 +6,16 @@ if not defined QEMU_HDD_DEF_SIZE (
     set QEMU_HDD_DEF_SIZE=10G
 )
 
-if exist "%~dp0\..\%QEMU_HDD_PATH%" (
-    set /P ANSWER="HDDイメージが存在します。HDDイメージ内のデータはすべて消去されますがよろしいですか (Y/N)？"
+if not exist "%~dp0\..\%QEMU_HDD_PATH%" goto :formatok
 
-    if /i {%ANSWER%}=={y} (goto :formatok)
-    if /i {%ANSWER%}=={yes} (goto :formatok)
+set /P ANSWER="HDDイメージが存在します。HDDイメージ内のデータはすべて消去されますがよろしいですか (Y/N)？"
 
-    exit
-)
+if /i {%ANSWER%}=={y} (goto :formatok)
+if /i {%ANSWER%}=={yes} (goto :formatok)
+
+pause
+
+exit
 
 :formatok
 

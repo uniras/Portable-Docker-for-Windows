@@ -36,7 +36,7 @@ PortableGit-(バージョン)-64-bit.7z.exeをダウンロードしてPortableGi
 あとはコマンドプロンプトを開き、PortableGit.exeを置いたインストールしたいフォルダにカレントディレクトリを移動して以下のコマンドを実行します。
 
 ```
-set QEMU_HDD_DEF_SIZE=10G & start /w PortableGit.exe -o.\Portable-Docker-for-Windows-master\app\PortableGit -y & .\PDW\app\PortableGit\mingw64\bin\curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip & .\PDW\app\PortableGit\usr\bin\unzip pdw.zip -d .\ & del /q .\pdw.zip & cd .\Portable-Docker-for-Windows-master & .\script\setup.bat
+set QEMU_HDD_DEF_SIZE=10G & start /w PortableGit.exe -o.\Portable-Docker-for-Windows-master\app\PortableGit -y & .\Portable-Docker-for-Windows-master\app\PortableGit\mingw64\bin\curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip & .\Portable-Docker-for-Windows-master\app\PortableGit\usr\bin\unzip pdw.zip -d .\ & del /q .\pdw.zip & cd .\Portable-Docker-for-Windows-master & .\script\setup.bat
 ```
 
 ## 使用方法

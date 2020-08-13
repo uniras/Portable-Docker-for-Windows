@@ -11,7 +11,7 @@ set DOCKERCMP_URL="https://github.com/docker/compose/releases/download/1.26.2/do
 
 :各種ソフトウェアのパス
 set APP_DIR=app
-set GIT_DIR=%APP_DIR%\PortableGit
+set WINGIT_DIR=%APP_DIR%\PortableGit
 set ALPINE_DIR=%APP_DIR%\alpine
 set QEMU_DIR=%APP_DIR%\qemu
 set UNIEXT_DIR=%APP_DIR%\uniext
@@ -21,7 +21,7 @@ set DOCKERCMP_DIR=%APP_DIR%\docker
 
 :各種ソフトウェアのファイル名
 set ALPINE_FILE=alpine.iso
-set GIT_FILE=PortableGit.exe
+set WINGIT_FILE=PortableGit.exe
 set QEMU_FILE=qemu.exe
 set UNIEXT_FILE=uniext.zip
 set TERATERM_FILE=teraterm.zip
@@ -32,7 +32,7 @@ set DOCKERCMP_FILE=docker-compose.exe
 set UNIEXT_PATH=%UNIEXT_DIR%\UniExtract
 set TERATERM_PATH=%TERATERM_DIR%\teraterm-4.105
 set QEMU_PATH=%QEMU_DIR%
-set GIT_PATH=%GIT_DIR%
+set WINGIT_PATH=%WINGIT_DIR%
 
 :パスの設定
-set PATH=%~dp0\..\%GIT_PATH%\bin;%~dp0\..\%GIT_PATH%\usr\bin;%~dp0\..\%GIT_PATH%\mingw64\bin;;%PATH%
+set PATH=%~dp0\..\%WINGIT_PATH%\bin;%~dp0\..\%WINGIT_PATH%\usr\bin;%~dp0\..\%WINGIT_PATH%\mingw64\bin;;%PATH%

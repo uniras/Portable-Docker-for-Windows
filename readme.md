@@ -125,17 +125,17 @@ SSH/Telnet対応のターミナルソフトウェアです。このソフトウ�
 
 WindowsホストからDockerコマンドを実行するのに使います。Docker CLIは公式では自分でビルドする必要がありますが、(Chocolatey向けに？)ビルド済みバイナリを公開している人がいるのでそれをダウンロードします。Docker-Composeは公式でビルド済みバイナリが公開されています。
 
-### PortableGit
+### PortableGit(Git for Windows)
 
-gitをWindowsで使うためのプログラム群です。gitはもちろん、unix系コマンドが大量に入っておりWindowsで使えるようになるので便利です。ここではダウンロード用にcurlとzipファイルの展開用にunzipを使っています。
+gitをWindowsで使うためのプログラム群です。gitはもちろん、unix系コマンドが大量に入っておりWindowsで使えるようになるので便利です。ここではダウンロード用にcurlとzipファイルの展開用にunzipを使っています。インストール後のbashの使用にも対応しました。
 
 ### cUrl
 
 上記の各種ソフトウェアのダウンロードに使います。最近のWindows10には標準で入っていますが、PortableGitのダウンロード以外ではPortableGitの方を使います。
 
-### tar(現在は使っていません)
+### tar
 
-~~ダウンロード後の各種zipファイルの解凍に使います(なぜかWindows10標準のtarはzipファイルの解凍ができます、そのかわりunzipはありません)。最近のWindows10には標準で入っています。~~
+ダウンロード後のzipファイルの解凍に使います(なぜかWindows10標準のtarはzipファイルの解凍ができます、そのかわりunzipはありません)。最近のWindows10には標準で入っています。
 
 ### SSHクライアント
 

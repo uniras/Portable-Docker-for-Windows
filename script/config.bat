@@ -2,7 +2,7 @@
 call "%~dp0\downloadconfig.bat"
 
 : QEMUの実行ファイルのパス
-set QEMU_EXE_PATH=%QEMU_PATH%\qemu-system-x86_64.exe
+set QEMU_EXE_PATH=%QEMU_PATH%\qemu-system-x86_64w.exe
 
 : QEMUのディスプレイモード
 : set QEMU_DISPLAY_MODE=-display sdl

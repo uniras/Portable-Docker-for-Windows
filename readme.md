@@ -15,12 +15,11 @@ Portable Docker for Windows(PDW)はWindows上でQemuを利用した管理者権�
 コマンドプロンプトを開き、cdコマンドやドライブの移動でインストールしたいフォルダをカレントディレクトリにした後、以下のコマンドを実行します。手入力は困難なので、下のコマンドをコピーし、コマンドプロンプト上で右クリックして貼り付けましょう。
 
 ```bat
-set QEMU_HDD_DEF_SIZE=10G^
- & curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip^
+curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip^
  & %windir%\system32\tar -xf pdw.zip -C .\^
  & del /q .\pdw.zip^
  & cd .\Portable-Docker-for-Windows-master^
- & .\script\setup.bat
+ & set QEMU_HDD_DEF_SIZE=10G & .\script\setup.bat
 ```
 
 使用するソフトウェアのダウンロードから解凍・セットアップまですべて自動で行います。
@@ -41,13 +40,12 @@ PortableGit-(バージョン)-64-bit.7z.exeをダウンロードしてPortableGi
 あとはコマンドプロンプトを開き、PortableGit.exeを置いたインストールしたいフォルダにカレントディレクトリを移動して以下のコマンドを実行します。
 
 ```bat
-set QEMU_HDD_DEF_SIZE=10G^
- & start /w PortableGit.exe -o.\Portable-Docker-for-Windows-master\app\PortableGit -y^
+start /w PortableGit.exe -o.\Portable-Docker-for-Windows-master\app\PortableGit -y^
  & .\Portable-Docker-for-Windows-master\app\PortableGit\mingw64\bin\curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip^
  & .\Portable-Docker-for-Windows-master\app\PortableGit\usr\bin\unzip pdw.zip -d .\^
  & del /q .\pdw.zip^
  & cd .\Portable-Docker-for-Windows-master^
- & .\script\setup.bat
+ & set QEMU_HDD_DEF_SIZE=10G & .\script\setup.bat
 ```
 
 ## 使用方法

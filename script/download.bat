@@ -71,7 +71,7 @@ if defined LIGHT_MODE_INSTALL (
         set EXPAND_OPT=-xf
         set EXPAND_DIR_OPT=-C
     )
-    if not exist %windir%\system32\tar (
+    if not exist %windir%\system32\tar.exe (
         echo 展開プログラムが見つからないためセットアップを続行できません。PortableGitにパスを通す必要があります。
         pause
         exit -1

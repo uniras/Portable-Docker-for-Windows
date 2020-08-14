@@ -90,6 +90,7 @@ echo Qemu 展開...
 
 : LIGHTモードインストールでは使えないbatを削除
 if defined LIGHT_MODE_INSTALL (
+    echo LIGHTモードでは使えないバッチファイルを削除します
     del /q "%~dp0\dockerconfig.bat"
     del /q "%~dp0\..\dockerconsole.bat"
     del /q "%~dp0\..\dockerbash.bat"

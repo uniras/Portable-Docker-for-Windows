@@ -67,17 +67,23 @@ set EXPAND_DIR_OPT=-d
 if defined LIGHT_MODE_INSTALL (
     where %EXPAND_CMD%
     if %ERRORLEVEL% NEQ 0 (
-        set EXPAND_CMD=tar
+        set EXPAND_CMD=%windir%\system32\tar
         set EXPAND_OPT=-xf
         set EXPAND_DIR_OPT=-C
     )
-)
+    if not exist %windir%\system32\tar (
+        echo 展開プログラムが見つからないためセットアップを続行できません。PortableGitにパスを通す必要があります。
+        pause
+        exit -1
+    )
+)else(
+    where %EXPAND_CMD%
+    if %ERRORLEVEL% NEQ 0 (
+        echo 展開プログラムが見つからないためセットアップを続行できません。PortableGitにパスを通す必要があります。
+        pause
+        exit -1
+    )
 
-where %EXPAND_CMD%
-if %ERRORLEVEL% NEQ 0 (
-    echo 展開プログラムが見つからないためセットアップを続行できません。PortableGitにパスを通す必要があります。
-    pause
-    exit -1
 )
 
 : echo %EXPAND_CMD%を使います。

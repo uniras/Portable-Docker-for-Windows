@@ -87,3 +87,8 @@ echo Teraterm “WŠJ...
 %EXPAND_CMD% %EXPAND_OPT% "%~dp0\..\%TERATERM_DIR%\%TERATERM_FILE%" %EXPAND_DIR_OPT% "%~dp0\..\%TERATERM_DIR%"
 echo Qemu “WŠJ...
 "%~dp0\..\%UNIEXT_PATH%\bin\x86\7z.exe" x -y -o"%~dp0\..\%QEMU_DIR%\" "%~dp0\..\%QEMU_DIR%\%QEMU_FILE%" 
+
+if defined LIGHT_MODE_INSTALL (
+    del "%~dp0\..\dockerconsole.bat"
+    del "%~dp0\..\dockerbash.bat"
+)

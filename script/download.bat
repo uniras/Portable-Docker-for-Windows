@@ -88,7 +88,9 @@ echo Teraterm 展開...
 echo Qemu 展開...
 "%~dp0\..\%UNIEXT_PATH%\bin\x86\7z.exe" x -y -o"%~dp0\..\%QEMU_DIR%\" "%~dp0\..\%QEMU_DIR%\%QEMU_FILE%" 
 
+: LIGHTモードインストールでは使えないbatを削除
 if defined LIGHT_MODE_INSTALL (
-    del "%~dp0\..\dockerconsole.bat"
-    del "%~dp0\..\dockerbash.bat"
+    del /q "%~dp0\dockerconfig.bat"
+    del /q "%~dp0\..\dockerconsole.bat"
+    del /q "%~dp0\..\dockerbash.bat"
 )

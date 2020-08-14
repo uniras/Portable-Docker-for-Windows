@@ -16,8 +16,7 @@ set ALPINE_DIR=%APP_DIR%\alpine
 set QEMU_DIR=%APP_DIR%\qemu
 set UNIEXT_DIR=%APP_DIR%\uniext
 set TERATERM_DIR=%APP_DIR%\teraterm
-set DOCKERCLI_DIR=%APP_DIR%\docker
-set DOCKERCMP_DIR=%APP_DIR%\docker
+set DOCKER_DIR=%APP_DIR%\docker
 
 :各種ソフトウェアのファイル名
 set ALPINE_FILE=alpine.iso
@@ -33,6 +32,7 @@ set UNIEXT_PATH=%UNIEXT_DIR%\UniExtract
 set TERATERM_PATH=%TERATERM_DIR%\teraterm-4.105
 set QEMU_PATH=%QEMU_DIR%
 set WINGIT_PATH=%WINGIT_DIR%
+set DOCKER_PATH=%DOCKER_DIR%
 
 :パスの設定
 set PATH=%~dp0\..\%WINGIT_PATH%\bin;%~dp0\..\%WINGIT_PATH%\usr\bin;%~dp0\..\%WINGIT_PATH%\mingw64\bin;%PATH%

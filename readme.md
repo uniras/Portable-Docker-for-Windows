@@ -94,7 +94,7 @@ scriptフォルダ
 - stopwait.bat　TeraTermマクロを利用してLinuxとQemuが正常にシャットダウンされるまで待機します。このバッチファイルは待機するだけでシャットダウンはしません。
 - setup.sh  AlpineLinuxインストール後に実行するセットアップ用のシェルスクリプトです。Teratermマクロ経由で転送・実行します。
 - *.ttl  Teratermマクロです
-- 拡張子なしファイル  bash用のシェルスクリプトで、同名のバッチファイルを呼び出します。anserfileはAlpineLinuxインストール用の設定ファイルです。
+- 拡張子なしファイル  bash用のシェルスクリプトで、同名のバッチファイルを呼び出します。answerfileはAlpineLinuxインストール用の設定ファイルです。
 
 app\Appinfoフォルダ
 

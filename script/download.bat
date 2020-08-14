@@ -30,10 +30,8 @@ mkdir "%~dp0\..\%UNIEXT_DIR%"
 mkdir "%~dp0\..\%TERATERM_DIR%"
 : LIGHT_MODE_INSTALL
 if not defined LIGHT_MODE_INSTALL (
-    mkdir "%~dp0\..\%DOCKERCLI_DIR%"
+    mkdir "%~dp0\..\%DOCKER_DIR%"
 )
-: mkdir "%~dp0\..\%DOCKERCMP_DIR%"
-
 
 : ダウンロード
 echo Alpine Linux ダウンロード...
@@ -48,9 +46,9 @@ curl -L -o "%~dp0\..\%TERATERM_DIR%\%TERATERM_FILE%"  %TERATERM_URL%
 : LIGHT_MODE_INSTALL
 if not defined LIGHT_MODE_INSTALL (
     echo Docker CLI ダウンロード...
-    curl -L -o "%~dp0\..\%DOCKERCLI_DIR%\%DOCKERCLI_FILE%"  %DOCKERCLI_URL%
+    curl -L -o "%~dp0\..\%DOCKER_DIR%\%DOCKERCLI_FILE%"  %DOCKERCLI_URL%
     echo Docker-Compose ダウンロード...
-    curl -L -o "%~dp0\..\%DOCKERCMP_DIR%\%DOCKERCMP_FILE%"  %DOCKERCMP_URL%
+    curl -L -o "%~dp0\..\%DOCKER_DIR%\%DOCKERCMP_FILE%"  %DOCKERCMP_URL%
 ) else (
     echo LIGHTモードインストールのため、Docker CLI / Docker Composeのダウンロードをスキップします。
 )
@@ -69,7 +67,7 @@ if %ERRORLEVEL% NEQ 0 (
         pause
         exit -1
     )
-    echo tarを使います。
+    echo tar(Windows10版)を使います。
     echo Universal Extractor 展開...
     %windir%\system32\tar -xf "%~dp0\..\%UNIEXT_DIR%\%UNIEXT_FILE%" -C "%~dp0\..\%UNIEXT_DIR%"
     echo Teraterm 展開...

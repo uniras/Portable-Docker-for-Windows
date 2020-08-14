@@ -12,11 +12,11 @@ pause
 
 exit
 
-formatok:
+:formatok
 
 del /q "%~dp0\..\%QEMU_HDD_PATH%"
 
-setupok:
+:setupok
 
 echo セットアップを開始します...
 

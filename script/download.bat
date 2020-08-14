@@ -67,7 +67,7 @@ if %ERRORLEVEL% NEQ 0 (
         pause
         exit -1
     )
-    echo tar(Windows10版)を使います。
+    echo tar（Windows10版）を使います。
     echo Universal Extractor 展開...
     %windir%\system32\tar -xf "%~dp0\..\%UNIEXT_DIR%\%UNIEXT_FILE%" -C "%~dp0\..\%UNIEXT_DIR%"
     echo Teraterm 展開...

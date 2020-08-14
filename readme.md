@@ -31,6 +31,19 @@ curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archi
 
 後で容量を増やすことはできるようですが、ちょっと面倒です。
 
+### PortableGitもDocker CLIも不要な場合
+
+WindowsからDocker使う予定がないなど、ダウンロード、インストールするソフトウェアを必要最小限にしたい場合には。
+以下を貼り付けて実行してください。
+
+```bat
+curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archive/master.zip^
+ & %windir%\system32\tar -xf pdw.zip -C .\^
+ & del /q .\pdw.zip^
+ & cd .\Portable-Docker-for-Windows-master^
+ & set QEMU_HDD_DEF_SIZE=10G &　set LIGHT_MODE_INSTALL=1 & .\script\setup.bat
+```
+
 ### PortableGitを手動でダウンロードする場合
 
 Windows10が古くcurlが無いまたは信条があり使いたくないなどの場合には[PortableGit(Git for Windows)](https://github.com/git-for-windows/git/releases/)をあらかじめダウンロードしておく方法があります。

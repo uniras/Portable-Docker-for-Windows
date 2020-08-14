@@ -10,12 +10,15 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 : PortableGitダウンロード・インストール
-if not exist "%~dp0\..\%WINGIT_DIR%" (
-    mkdir "%~dp0\..\%WINGIT_DIR%"
-    echo PortableGit ダウンロード...
-    curl -L -o "%~dp0\..\%WINGIT_DIR%\%WINGIT_FILE%"  %WINGIT_URL%
-    echo PortableGit 展開...
-    start /w "" "%~dp0\..\%WINGIT_DIR%\%WINGIT_FILE%" -o"%~dp0\..\%WINGIT_DIR%" -y
+: LIGHT_MODE_INSTALL
+if not defined LIGHT_MODE_INSTALL (
+    if not exist "%~dp0\..\%WINGIT_DIR%" (
+        mkdir "%~dp0\..\%WINGIT_DIR%"
+        echo PortableGit ダウンロード...
+        curl -L -o "%~dp0\..\%WINGIT_DIR%\%WINGIT_FILE%"  %WINGIT_URL%
+        echo PortableGit 展開...
+        start /w "" "%~dp0\..\%WINGIT_DIR%\%WINGIT_FILE%" -o"%~dp0\..\%WINGIT_DIR%" -y
+    )
 )
 
 : フォルダ作成
@@ -24,8 +27,12 @@ mkdir "%~dp0\..\%ALPINE_DIR%"
 mkdir "%~dp0\..\%QEMU_DIR%"
 mkdir "%~dp0\..\%UNIEXT_DIR%"
 mkdir "%~dp0\..\%TERATERM_DIR%"
-mkdir "%~dp0\..\%DOCKERCLI_DIR%"
-: mkdir "%~dp0\..\%DOCKERCMP_DIR%"
+: LIGHT_MODE_INSTALL
+if not defined LIGHT_MODE_INSTALL (
+    mkdir "%~dp0\..\%DOCKERCLI_DIR%"
+    : mkdir "%~dp0\..\%DOCKERCMP_DIR%"
+)
+
 
 : ダウンロード
 echo Alpine Linux ダウンロード...
@@ -36,24 +43,32 @@ echo Universal Extractor 2 ダウンロード...
 curl -L -o "%~dp0\..\%UNIEXT_DIR%\%UNIEXT_FILE%"  %UNIEXT_URL%
 echo Teraterm ダウンロード...
 curl -L -o "%~dp0\..\%TERATERM_DIR%\%TERATERM_FILE%"  %TERATERM_URL%
-echo Docker CLI ダウンロード...
-curl -L -o "%~dp0\..\%DOCKERCLI_DIR%\%DOCKERCLI_FILE%"  %DOCKERCLI_URL%
-echo Docker-Compose ダウンロード...
-curl -L -o "%~dp0\..\%DOCKERCMP_DIR%\%DOCKERCMP_FILE%"  %DOCKERCMP_URL%
+
+: LIGHT_MODE_INSTALL
+if not defined LIGHT_MODE_INSTALL (
+    echo Docker CLI ダウンロード...
+    curl -L -o "%~dp0\..\%DOCKERCLI_DIR%\%DOCKERCLI_FILE%"  %DOCKERCLI_URL%
+    echo Docker-Compose ダウンロード...
+    curl -L -o "%~dp0\..\%DOCKERCMP_DIR%\%DOCKERCMP_FILE%"  %DOCKERCMP_URL%
+}
+
 
 : PATHにunzipがあればunzipを使い、なければWindow10標準のtarを使う(Window10のtarのzip解凍はWindow10独自機能の模様)
-: という方針は取りやめてPortableGitのunzipを使う。
+: という方針は取りやめてPortableGitのunzipを使う。tarはPortableGitを入れないLIGHTインストールで使うようにする。
 echo 展開プログラムの存在確認...
 set EXPAND_CMD=unzip
 set EXPAND_OPT=
 set EXPAND_DIR_OPT=-d
 
-: where %EXPAND_CMD%
-: if %ERRORLEVEL% NEQ 0 (
-:    set EXPAND_CMD=tar
-:    set EXPAND_OPT=-xf
-:    set EXPAND_DIR_OPT=-C
-: )
+: LIGHT_MODE_INSTALL
+if defined LIGHT_MODE_INSTALL (
+    where %EXPAND_CMD%
+    if %ERRORLEVEL% NEQ 0 (
+        set EXPAND_CMD=tar
+        set EXPAND_OPT=-xf
+        set EXPAND_DIR_OPT=-C
+    )
+)
 
 where %EXPAND_CMD%
 if %ERRORLEVEL% NEQ 0 (

@@ -19,7 +19,7 @@ if not defined LIGHT_MODE_INSTALL (
         start /w "" "%~dp0\..\%WINGIT_DIR%\%WINGIT_FILE%" -o"%~dp0\..\%WINGIT_DIR%" -y
     )
 ) else (
-    echo LIGHTモードインストールのため、PortableGitのインストールをスキップします。
+    echo LIGHTモードインストールのため、PortableGitのダウンロード・インストールをスキップします。
 )
 
 : フォルダ作成
@@ -52,7 +52,7 @@ if not defined LIGHT_MODE_INSTALL (
     echo Docker-Compose ダウンロード...
     curl -L -o "%~dp0\..\%DOCKERCMP_DIR%\%DOCKERCMP_FILE%"  %DOCKERCMP_URL%
 ) else (
-    echo LIGHTモードインストールのため、Docker CLI / Docker Composeのインストールをスキップします。
+    echo LIGHTモードインストールのため、Docker CLI / Docker Composeのダウンロードをスキップします。
 )
 
 

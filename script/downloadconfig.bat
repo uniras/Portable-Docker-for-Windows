@@ -35,4 +35,4 @@ set QEMU_PATH=%QEMU_DIR%
 set WINGIT_PATH=%WINGIT_DIR%
 
 :ÉpÉXÇÃê›íË
-set PATH=%~dp0\..\%WINGIT_PATH%\bin;%~dp0\..\%WINGIT_PATH%\usr\bin;%~dp0\..\%WINGIT_PATH%\mingw64\bin;;%PATH%
+set PATH=%~dp0\..\%WINGIT_PATH%\bin;%~dp0\..\%WINGIT_PATH%\usr\bin;%~dp0\..\%WINGIT_PATH%\mingw64\bin;%PATH%

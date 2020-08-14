@@ -76,7 +76,7 @@ if defined LIGHT_MODE_INSTALL (
         pause
         exit -1
     )
-)else(
+) else (
     where %EXPAND_CMD%
     if %ERRORLEVEL% NEQ 0 (
         echo 展開プログラムが見つからないためセットアップを続行できません。PortableGitにパスを通す必要があります。

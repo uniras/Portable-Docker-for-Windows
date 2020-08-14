@@ -59,38 +59,26 @@ if not defined LIGHT_MODE_INSTALL (
 : PATHにunzipがあればunzipを使い、なければWindow10標準のtarを使う(Window10のtarのzip解凍はWindow10独自機能の模様)
 : という方針は取りやめてPortableGitのunzipを使う。tarはPortableGitを入れないLIGHTモードインストールで使うようにする。
 echo 展開プログラムの存在確認...
-set EXPAND_CMD=unzip
-set EXPAND_OPT=
-set EXPAND_DIR_OPT=-d
-
-: LIGHT_MODE_INSTALL
-if defined LIGHT_MODE_INSTALL (
-    where %EXPAND_CMD%
-    if %ERRORLEVEL% NEQ 0 (
-        set EXPAND_CMD=%windir%\system32\tar
-        set EXPAND_OPT=-xf
-        set EXPAND_DIR_OPT=-C
-    )
+where unzip
+if %ERRORLEVEL% NEQ 0 (
     if not exist %windir%\system32\tar.exe (
         echo 展開プログラムが見つからないためセットアップを続行できません。PortableGitにパスを通す必要があります。
         pause
         exit -1
     )
+    echo tarを使います。
+    echo Universal Extractor 展開...
+    %windir%\system32\tar -xf "%~dp0\..\%UNIEXT_DIR%\%UNIEXT_FILE%" -C "%~dp0\..\%UNIEXT_DIR%"
+    echo Teraterm 展開...
+    %windir%\system32\tar -xf "%~dp0\..\%TERATERM_DIR%\%TERATERM_FILE%" -C "%~dp0\..\%TERATERM_DIR%"
 ) else (
-    where %EXPAND_CMD%
-    if %ERRORLEVEL% NEQ 0 (
-        echo 展開プログラムが見つからないためセットアップを続行できません。PortableGitにパスを通す必要があります。
-        pause
-        exit -1
-    )
-
+    echo unzipを使います。
+    echo Universal Extractor 展開...
+    unzip "%~dp0\..\%UNIEXT_DIR%\%UNIEXT_FILE%" -d "%~dp0\..\%UNIEXT_DIR%"
+    echo Teraterm 展開...
+    unzip "%~dp0\..\%TERATERM_DIR%\%TERATERM_FILE%" -d "%~dp0\..\%TERATERM_DIR%"
 )
 
-: echo %EXPAND_CMD%を使います。
-echo Universal Extractor 展開...
-%EXPAND_CMD% %EXPAND_OPT% "%~dp0\..\%UNIEXT_DIR%\%UNIEXT_FILE%" %EXPAND_DIR_OPT% "%~dp0\..\%UNIEXT_DIR%"
-echo Teraterm 展開...
-%EXPAND_CMD% %EXPAND_OPT% "%~dp0\..\%TERATERM_DIR%\%TERATERM_FILE%" %EXPAND_DIR_OPT% "%~dp0\..\%TERATERM_DIR%"
 echo Qemu 展開...
 "%~dp0\..\%UNIEXT_PATH%\bin\x86\7z.exe" x -y -o"%~dp0\..\%QEMU_DIR%\" "%~dp0\..\%QEMU_DIR%\%QEMU_FILE%" 
 

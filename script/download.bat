@@ -18,6 +18,8 @@ if not defined LIGHT_MODE_INSTALL (
         echo PortableGit 展開...
         start /w "" "%~dp0\..\%WINGIT_DIR%\%WINGIT_FILE%" -o"%~dp0\..\%WINGIT_DIR%" -y
     )
+) else (
+    echo LIGHTモードインストールのため、PortableGitのインストールをスキップします。
 )
 
 : フォルダ作成
@@ -49,11 +51,13 @@ if not defined LIGHT_MODE_INSTALL (
     curl -L -o "%~dp0\..\%DOCKERCLI_DIR%\%DOCKERCLI_FILE%"  %DOCKERCLI_URL%
     echo Docker-Compose ダウンロード...
     curl -L -o "%~dp0\..\%DOCKERCMP_DIR%\%DOCKERCMP_FILE%"  %DOCKERCMP_URL%
+) else (
+    echo LIGHTモードインストールのため、Docker CLI / Docker Composeのインストールをスキップします。
 )
 
 
 : PATHにunzipがあればunzipを使い、なければWindow10標準のtarを使う(Window10のtarのzip解凍はWindow10独自機能の模様)
-: という方針は取りやめてPortableGitのunzipを使う。tarはPortableGitを入れないLIGHTインストールで使うようにする。
+: という方針は取りやめてPortableGitのunzipを使う。tarはPortableGitを入れないLIGHTモードインストールで使うようにする。
 echo 展開プログラムの存在確認...
 set EXPAND_CMD=unzip
 set EXPAND_OPT=

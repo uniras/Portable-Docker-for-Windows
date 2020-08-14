@@ -5,6 +5,8 @@ if not exist "%~dp0\..\%QEMU_HDD_PATH%" goto :setupok
 
 echo すでにインストール済みのようです。セットアップを中断します。
 
+pause
+
 exit
 
 :setupok

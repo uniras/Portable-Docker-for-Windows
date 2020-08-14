@@ -55,12 +55,15 @@ if not defined LIGHT_MODE_INSTALL (
     echo LIGHTモードインストールのため、Docker CLI / Docker Composeのダウンロードをスキップします。
 )
 
-
-: PATHにunzipがあればunzipを使い、なければWindow10標準のtarを使う(Window10のtarのzip解凍はWindow10独自機能の模様)
-: という方針は取りやめてPortableGitのunzipを使う。tarはPortableGitを入れないLIGHTモードインストールで使うようにする。
+: unzipでダウンロードしたzipを展開、なければLIGHTモード時のみWindow10標準のtarを使う(Window10のtarのzip解凍はWindow10独自機能の模様)
 echo 展開プログラムの存在確認...
 where unzip
 if %ERRORLEVEL% NEQ 0 (
+    if not defined LIGHT_MODE_INSTALL (
+        echo unzipが見つからないためセットアップを続行できません。PortableGitにパスを通す必要があります。
+        pause
+        exit -1
+    )
     if not exist %windir%\system32\tar.exe (
         echo 展開プログラムが見つからないためセットアップを続行できません。PortableGitにパスを通す必要があります。
         pause

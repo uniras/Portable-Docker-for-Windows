@@ -24,4 +24,7 @@ call "%~dp0\download.bat"
 
 call "%~dp0\install.bat"
 
+
+echo セットアップが終了しました。
+
 pause

@@ -19,6 +19,8 @@ exit
 
 :formatok
 
+echo インストールを開始します。
+
 echo HDDイメージ作成...
 echo 最大%QEMU_HDD_DEF_SIZE%Bの設定でHDDイメージを作成します。
 
@@ -40,4 +42,4 @@ echo セットアップマクロ 起動...
 
 "%~dp0\..\%TERATERM_PATH%\ttpmacro.exe" /I "%~dp0\setup.ttl"
 
-echo セットアップが終了しました
+echo インストールが終了しました。

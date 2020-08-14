@@ -1,6 +1,8 @@
 @echo off
 call "%~dp0\downloadconfig.bat"
 
+echo ダウンロード・展開を開始します。
+
 echo curlプログラムの存在確認...
 where curl
 if %ERRORLEVEL% NEQ 0 (
@@ -90,3 +92,5 @@ if defined LIGHT_MODE_INSTALL (
     del /q "%~dp0\..\dockerconsole.bat"
     del /q "%~dp0\..\dockerbash.bat"
 )
+
+echo ダウンロード・展開が終了しました。

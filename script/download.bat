@@ -10,7 +10,6 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 : PortableGitダウンロード・インストール
-: LIGHT_MODE_INSTALL
 if not defined LIGHT_MODE_INSTALL (
     if not exist "%~dp0\..\%WINGIT_DIR%" (
         mkdir "%~dp0\..\%WINGIT_DIR%"
@@ -30,8 +29,8 @@ mkdir "%~dp0\..\%TERATERM_DIR%"
 : LIGHT_MODE_INSTALL
 if not defined LIGHT_MODE_INSTALL (
     mkdir "%~dp0\..\%DOCKERCLI_DIR%"
-    : mkdir "%~dp0\..\%DOCKERCMP_DIR%"
 )
+: mkdir "%~dp0\..\%DOCKERCMP_DIR%"
 
 
 : ダウンロード
@@ -50,7 +49,7 @@ if not defined LIGHT_MODE_INSTALL (
     curl -L -o "%~dp0\..\%DOCKERCLI_DIR%\%DOCKERCLI_FILE%"  %DOCKERCLI_URL%
     echo Docker-Compose ダウンロード...
     curl -L -o "%~dp0\..\%DOCKERCMP_DIR%\%DOCKERCMP_FILE%"  %DOCKERCMP_URL%
-}
+)
 
 
 : PATHにunzipがあればunzipを使い、なければWindow10標準のtarを使う(Window10のtarのzip解凍はWindow10独自機能の模様)

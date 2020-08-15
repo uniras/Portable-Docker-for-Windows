@@ -15,11 +15,11 @@ echo セットアップを開始します...
 
 call "%~dp0\download.bat"
 
-if %errorlevel% equ -1 goto :err
+if %ERRORLEVEL% EQU -1 goto :err
 
 call "%~dp0\install.bat"
 
-if %errorlevel% equ -1 goto :err
+if %ERRORLEVEL% EQU -1 goto :err
 
 goto :ok
 
@@ -28,7 +28,7 @@ echo セットアップに失敗しました。
 
 pause
 
-exit /b 0
+exit /b -1
 
 :ok
 echo セットアップが終了しました。

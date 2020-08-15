@@ -19,6 +19,11 @@ exit /b -1
 
 :formatok
 
+if not exist "%~dp0\..\%QEMU_EXE_PATH%" (
+    echo Qemuが見つかりません。Qemuのダウンロード・展開に失敗しているようです。
+    exit /b -1
+)
+
 echo インストールを開始します。
 
 echo HDDイメージ作成...

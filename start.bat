@@ -1,3 +1,8 @@
 @echo off
-call "%~dp0\script\config.bat"
-start /min "Qemu" "%~dp0\%QEMU_EXE_PATH%" %QEMU_DISPLAY_MODE% %QEMU_SERIAL_OPT% %QEMU_CLOCK_OPT% -smp 2 -m %QEMU_USE_MEMORY% -net nic -net %QEMU_NET_OPTION% -hda "%~dp0%QEMU_HDD_PATH%"
+call "%~dp0\script\boot.bat"
+echo Linuxを起動しています。しばらくお待ちください...
+call "%~dp0\script\startwait.bat"
+if ERRORLEVEL EQU 0 goto exit /b 0
+echo 接続に失敗しました。Qemuが起動していないようです。
+pause
+exit /b -1

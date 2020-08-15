@@ -15,7 +15,7 @@ if /i {%ANSWER%}=={yes} (goto :formatok)
 
 pause
 
-exit
+exit /b -1
 
 :formatok
 
@@ -43,3 +43,5 @@ echo セットアップマクロ 起動...
 "%~dp0\..\%TERATERM_PATH%\ttpmacro.exe" /I "%~dp0\setup.ttl"
 
 echo インストールが終了しました。
+
+exit /b 0

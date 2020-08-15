@@ -6,8 +6,6 @@ echo ダウンロード・展開を開始します。
 : 親ディレクトリの絶対パスを取得(msiexecが絶対パスしか受け付けないため)
 for /f "usebackq" %%A in (`powershell -Command "convert-path %~dp0\.."`) do set BASEDIR=%%A
 
-echo %BASEDIR%
-
 echo curlプログラムの存在確認...
 where curl
 if %ERRORLEVEL% NEQ 0 (

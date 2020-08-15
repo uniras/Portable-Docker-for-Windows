@@ -61,7 +61,7 @@ if not defined LIGHT_MODE_INSTALL (
 )
 
 echo 7-zip“WŠJ...
-msiexec /quiet /a "%BASEDIR%\%SEVENZ_DIR%\%SEVENZ_FILE%" targetdir="%BASEDIR%\%SEVENZ_DIR%\7z"
+msiexec /passive /a "%BASEDIR%\%SEVENZ_DIR%\%SEVENZ_FILE%" targetdir="%BASEDIR%\%SEVENZ_DIR%\7z"
 
 echo Teraterm “WŠJ...
 "%BASEDIR%\%SEVENZ_PATH%\7z.exe" x -y -o"%BASEDIR%\%TERATERM_DIR%\" "%BASEDIR%\%TERATERM_DIR%\%TERATERM_FILE%" 

@@ -85,7 +85,7 @@ halt.batはssh経由でLinuxをシャットダウンするコマンドを送信�
 
 scriptフォルダ
 
-- boot.bat  Qemuを起動してLinuxをブートします。Linuxのブートを待機しません。
+- boot.bat  Qemuを起動してLinuxをブートします。Linuxのブート終了を待機しません。
 - config.bat　各種設定を環境変数として設定しています。設定変更する場合はこのファイルを書き換えます。
 - dockerconfig.bat　Docker CLIの動作に必要な環境変数を設定します。
 - dockerssh.bat  SSHを起動してLinuxに接続します。コマンドラインでdockerssh.batの後にコマンドを入力するとそのコマンドをSSHを通じてLinux上で実行します。

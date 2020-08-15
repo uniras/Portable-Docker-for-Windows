@@ -35,7 +35,7 @@ mkdir "%BASEDIR%\%ALPINE_DIR%"
 mkdir "%BASEDIR%\%QEMU_DIR%"
 mkdir "%BASEDIR%\%SEVENZ_DIR%"
 mkdir "%BASEDIR%\%TERATERM_DIR%"
-: LIGHT_MODE_INSTALL
+: LIGHT_MODE_INSTALLではDocker CLI/Docker Composeはインストールしないのでフォルダを作成しない。
 if not defined LIGHT_MODE_INSTALL (
     mkdir "%BASEDIR%\%DOCKER_DIR%"
 )
@@ -50,7 +50,7 @@ curl -L -o "%BASEDIR%\%SEVENZ_DIR%\%SEVENZ_FILE%"  %SEVENZ_URL%
 echo Teraterm ダウンロード...
 curl -L -o "%BASEDIR%\%TERATERM_DIR%\%TERATERM_FILE%"  %TERATERM_URL%
 
-: LIGHT_MODE_INSTALL
+: Docker CLI/Docker Composeのダウンロード。
 if not defined LIGHT_MODE_INSTALL (
     echo Docker CLI ダウンロード...
     curl -L -o "%BASEDIR%\%DOCKER_DIR%\%DOCKERCLI_FILE%"  %DOCKERCLI_URL%

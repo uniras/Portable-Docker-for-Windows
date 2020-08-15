@@ -28,7 +28,7 @@ set DOCKERCLI_FILE=docker.exe
 set DOCKERCMP_FILE=docker-compose.exe
 
 :‰ð“€Œã‚ÌƒtƒHƒ‹ƒ_–¼
-set SEVENZ_PATH=%UNIEXT_DIR%\7z\Files\7-zip
+set SEVENZ_PATH=%SEVENZ_DIR%\7z\Files\7-zip
 set TERATERM_PATH=%TERATERM_DIR%\teraterm-4.105
 set QEMU_PATH=%QEMU_DIR%
 set WINGIT_PATH=%WINGIT_DIR%

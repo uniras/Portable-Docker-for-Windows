@@ -1,8 +1,8 @@
 @echo off
 call "%~dp0\script\boot.bat"
-echo Linuxを起動しています。しばらくお待ちください...
+echo Linux���N�����Ă��܂��B���΂炭���҂���������...
 call "%~dp0\script\startwait.bat"
-if ERRORLEVEL EQU 0 goto exit /b 0
-echo 接続に失敗しました。Qemuが起動していないようです。
+if %ERRORLEVEL% EQU 0 exit /b 0
+echo �ڑ��Ɏ��s���܂����BQemu���N�����Ă��Ȃ��悤�ł��B
 pause
 exit /b -1

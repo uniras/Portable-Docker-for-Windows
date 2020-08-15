@@ -81,10 +81,11 @@ halt.batはssh経由でLinuxをシャットダウンするコマンドを送信�
 - dockerbash.bat  Qemuを起動し、Linuxのブートを待ってDocker CLIが使える状態でPortableGitのbashを起動します。
 - halt.bat　SSH経由でLinuxをシャットダウンし、Qemuが終了するまで待機します。
 - ssh.bat　SSHを起動してLinuxに接続します(scriptフォルダのdockerssh.batを呼び出します)
-- start.bat　Qemuを起動してLinuxをブートします。
+- start.bat　Qemuを起動してLinuxをブートします。Linuxのブートが終了するまで待機します。
 
 scriptフォルダ
 
+- boot.bat  Qemuを起動してLinuxをブートします。Linuxのブートを待機せず即終了します。
 - config.bat　各種設定を環境変数として設定しています。設定変更する場合はこのファイルを書き換えます。
 - dockerconfig.bat　Docker CLIの動作に必要な環境変数を設定します。
 - dockerssh.bat  SSHを起動してLinuxに接続します。コマンドラインでdockerssh.batの後にコマンドを入力するとそのコマンドをSSHを通じてLinux上で実行します。

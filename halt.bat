@@ -1,3 +1,4 @@
 @echo off
 call "%~dp0\script\config.bat"
-"%~dp0\script\dockerssh.bat" %HALTCOMMAND%
+call "%~dp0\script\stop.bat"
+call "%~dp0\script\stopwait.bat"

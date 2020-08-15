@@ -79,7 +79,7 @@ halt.batはssh経由でLinuxをシャットダウンするコマンドを送信�
 
 - dockerconsole.bat　Qemuを起動し、Linuxのブートを待ってDocker CLIが使える状態でコマンドプロンプトを起動します。
 - dockerbash.bat  Qemuを起動し、Linuxのブートを待ってDocker CLIが使える状態でPortableGitのbashを起動します。
-- halt.bat　SSH経由でLinuxとQemuをシャットダウンします。
+- halt.bat　SSH経由でLinuxをシャットダウンし、Qemuが終了するまで待機します。
 - ssh.bat　SSHを起動してLinuxに接続します(scriptフォルダのdockerssh.batを呼び出します)
 - start.bat　Qemuを起動してLinuxをブートします。
 
@@ -93,6 +93,7 @@ scriptフォルダ
 - install.bat  QemuにLnuxのインストール・セットアップを行います。HDDイメージは初期化されます。
 - setup.bat　セットアップを開始します。すでにセットアップが終了している場合でも全て初期化して再度ダウンロード・セットアップしますので注意してください。
 - startwait.bat　TeraTermマクロを利用してLinuxがブート中の場合はLinuxのブート完了まで待機します。ブート済みの場合はすぐに終了します。
+- stop.bat  SSH経由でLinuxとQemuをシャットダウンします。Linuxのシャットダウン処理やQemuの終了は待機しません。
 - stopwait.bat　TeraTermマクロを利用してLinuxとQemuが正常にシャットダウンされるまで待機します。このバッチファイルは待機するだけでシャットダウンはしません。
 - setup.sh  AlpineLinuxインストール後に実行するセットアップ用のシェルスクリプトです。Teratermマクロ経由で転送・実行します。
 - *.ttl  Teratermマクロです

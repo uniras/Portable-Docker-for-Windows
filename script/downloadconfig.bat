@@ -7,7 +7,7 @@ set QEMU_URL="https://qemu.weilnetz.de/w64/2020/qemu-w64-setup-20200814.exe"
 set SEVENZ_URL="https://ja.osdn.net/frs/redir.php?m=jaist&f=sevenzip%%2F70662%%2F7z1900-x64.msi"
 set TERATERM_URL="https://ja.osdn.net/frs/redir.php?m=jaist&f=ttssh2%%2F72009%%2Fteraterm-4.105.zip"
 set DOCKERCLI_URL="https://github.com/StefanScherer/docker-cli-builder/releases/download/19.03.12/docker.exe"
-set DOCKERCMP_URL="https://github.com/docker/compose/releases/download/1.26.2/docker-compose-Windows-x86_64.exe"
+set DOCKERCMP_URL="https://github.com/docker/compose/releases/download/1.27.3/docker-compose-Windows-x86_64.exe"
 
 :各種ソフトウェアのパス
 set APP_DIR=app

@@ -33,6 +33,10 @@ curl -L -o .\pdw.zip https://github.com/uniras/Portable-Docker-for-Windows/archi
 
 仮想HDDの内容が消えてもいいのならQEMU_HDD_DEF_SIZEを必要なサイズに設定してscriptフォルダのinstall.batを実行すれば、すでにダウンロード・展開されているファイルを元に再度設定したサイズで再インストールされます。
 
+```bat
+set QEMU_HDD_DEF_SIZE=10G & .\script\install.bat
+```
+
 ### PortableGitもDocker CLIも不要な場合
 
 WindowsからDocker使う予定がないなど、ダウンロード、インストールするソフトウェアを必要最小限にしたい場合には。

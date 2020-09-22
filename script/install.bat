@@ -10,12 +10,16 @@ if not exist "%~dp0\..\%QEMU_HDD_PATH%" goto :formatok
 
 set /P ANSWER="HDDイメージが存在します。HDDイメージ内のデータはすべて消去されますがよろしいですか (Y/N)？"
 
-if /i {%ANSWER%}=={y} (goto :formatok)
-if /i {%ANSWER%}=={yes} (goto :formatok)
+if /i {%ANSWER%}=={y} (goto :deleteok)
+if /i {%ANSWER%}=={yes} (goto :deleteok)
 
 pause
 
 exit /b -1
+
+:deleteok
+
+del "%~dp0\..\%QEMU_HDD_PATH%"
 
 :formatok
 

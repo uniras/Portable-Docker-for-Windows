@@ -1,11 +1,5 @@
 #!/bin/sh
 
-#webmin variables.
-WEBMIN_VERSION=1.960
-WEBMIN_PORT=10000
-WEBMIN_USERNAME=admin
-WEBMIN_PASSWORD=admin
-
 #Enable root login.
 echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
 
@@ -30,22 +24,23 @@ echo '{"hosts": ["tcp://0.0.0.0:2375", "unix:///var/run/docker.sock"]}' > /etc/d
 service docker start
 rc-update add docker boot
 
+#Waiting docker start.
+sleep 10
+
 #Install Portainer.
 docker volume create portainer_data
 docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 
-set -e
-
 #Download webmin.
-echo Downloading webmin-${WEBMIN_VERSION}.tar.gz...
-curl -sL https://prdownloads.sourceforge.net/webadmin/webmin-${WEBMIN_VERSION}.tar.gz \
-     -o webmin-${WEBMIN_VERSION}.tar.gz
+echo Downloading webmin-%WEBMIN_VERSION%.tar.gz...
+curl -sL https://prdownloads.sourceforge.net/webadmin/webmin-%WEBMIN_VERSION%.tar.gz \
+     -o webmin-%WEBMIN_VERSION%.tar.gz
 
 #Extract webmin.
 echo Extracting webmin...
-tar zxf webmin-${WEBMIN_VERSION}.tar.gz -C /var/lib/
-mv /var/lib/webmin-${WEBMIN_VERSION} /var/lib/webmin
-rm -rf webmin-${WEBMIN_VERSION}.tar.gz
+tar zxf webmin-%WEBMIN_VERSION%.tar.gz -C /var/lib/
+mv /var/lib/webmin-%WEBMIN_VERSION% /var/lib/webmin
+rm -rf webmin-%WEBMIN_VERSION%.tar.gz
 cd /var/lib/webmin
 
 #Execute Setup Script.
@@ -53,19 +48,18 @@ cat << EOG | ./setup.sh
 /etc/webmin
 /var/log/webmin
 /usr/bin/perl
-${WEBMIN_PORT}
-${WEBMIN_USERNAME}
-${WEBMIN_PASSWORD}
-${WEBMIN_PASSWORD}
+10000
+admin
+
+
 y
 EOG
 
 #Write Shellscript Files.
 cat << EOG > /etc/init.d/webmin
 #!/sbin/openrc-run
-WEBMIN=/etc/webmin
-start() { \${WEBMIN}/start; }
-stop() { \${WEBMIN}/stop; }
+start() { /etc/webmin/start; }
+stop() { /etc/webmin/stop; }
 EOG
 
 #Setting Startup.

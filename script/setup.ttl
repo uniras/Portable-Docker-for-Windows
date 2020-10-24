@@ -1,13 +1,13 @@
-;インストールしたAlpine LinuxにSSHログインができるように設定・Dockerのインストールを行う
+;インストールしたAlpine LinuxにSSHログインができるように設定・Docker・webmin・Portainerのインストールを行う
 
 ;環境変数を展開して設定を反映
 expandenv host "localhost:%QEMU_SERIAL_PORT% /nossh /T=1"
-expandenv shellscript "%SCRIPTDIR%\setup.sh"
+expandenv setupscript "%SCRIPTDIR%\setup.sh"
 expandenv loginprompt "%LINUX_SETUP_HOSTNAME% login:"
 expandenv prompt "%LINUX_SETUP_HOSTNAME%:"
 
-;念のため10秒待つ
-pause 10
+;念のため3秒待つ
+pause 3
 
 ;接続
 connect host
@@ -21,7 +21,7 @@ sendln "root"
 wait prompt
 
 ;セットアップ用のシェルスクリプトをローカルから読み込んでcatコマンドでリモートに書き込み
-fileopen fh shellscript 0
+fileopen fh setupscript 0
 
 sendln "cat << EOF > setup.sh"
 
@@ -39,13 +39,11 @@ fileclose fh
 
 wait prompt
 
-;シェルスクリプト実行
-sendln "sh setup.sh"
+sendln "sh ~/setup.sh"
 
 wait prompt
 
-;シェルスクリプト削除
-sendln "rm setup.sh"
+sendln "rm ~/setup.sh"
 
 wait prompt
 

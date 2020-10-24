@@ -6,8 +6,8 @@ expandenv answerfile "%SCRIPTDIR%\answerfile"
 expandenv loginprompt "%LINUX_INSTALL_HOSTNAME% login:"
 expandenv prompt "%LINUX_INSTALL_HOSTNAME%:"
 
-;念のため10秒待つ
-pause 10
+;念のため3秒待つ
+pause 3
 
 ;接続
 connect host

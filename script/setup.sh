@@ -49,7 +49,7 @@ rm -rf webmin-${WEBMIN_VERSION}.tar.gz
 cd /var/lib/webmin
 
 #Execute Setup Script.
-cat << EOF | ./setup.sh
+cat << EOG | ./setup.sh
 /etc/webmin
 /var/log/webmin
 /usr/bin/perl
@@ -58,15 +58,15 @@ ${WEBMIN_USERNAME}
 ${WEBMIN_PASSWORD}
 ${WEBMIN_PASSWORD}
 y
-EOF
+EOG
 
 #Write Shellscript Files.
-cat << EOF > /etc/init.d/webmin
+cat << EOG > /etc/init.d/webmin
 #!/sbin/openrc-run
 WEBMIN=/etc/webmin
 start() { \${WEBMIN}/start; }
 stop() { \${WEBMIN}/stop; }
-EOF
+EOG
 
 #Setting Startup.
 chmod a+x /etc/init.d/webmin

@@ -3,6 +3,8 @@
 ;環境変数を展開して設定を反映
 expandenv host "localhost:%QEMU_SERIAL_PORT% /nossh /T=1"
 expandenv haltcommand "%HALTCOMMAND%"
+expandenv loginprompt "%LINUX_HOSTNAME% login:"
+expandenv prompt "%LINUX_HOSTNAME%:"
 
 ;接続
 connect host
@@ -16,10 +18,36 @@ endif
 ;ターミナル非表示
 showtt -1
 
+;なぜか一度エンターを送らないとプロンプトが表示されないようなので送信
+sendln ""
+
+;ログインプロンプトまたはコマンドプロンプトの表示を待つ
+timeout = 2
+wait prompt loginprompt
+
+if result = 0 goto err
+
+if result = 1 goto halt
+
+sendln "root"
+
+wait prompt
+if result = 0 goto err
+
+:halt
 ;シャットダウンコマンド送信
 sendln haltcommand
 
+wait prompt
+if result = 0 goto err
+
 ;正常終了
 setexitcode 0
+
+end
+
+;異常終了
+:err
+setexitcode -1
 
 end

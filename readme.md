@@ -152,7 +152,7 @@ WindowsホストからDockerコマンドを実行するのに使います。Dock
 
 ### PortableGit(Git for Windows)
 
-gitをWindowsで使うためのプログラム群です。gitはもちろん、unix系コマンドが大量に入っておりWindowsで使えるようになるので便利です。インストールではダウンロード用にcurl~~とzipファイルの展開用にunzip~~(7-zipで展開するようにしました)を使っています。インストール後のbashの使用にも対応しました。
+gitをWindowsで使うためのプログラム群です。gitはもちろん、unix系コマンドが大量に入っておりWindowsで使えるようになるので便利です。インストールではダウンロード用にcurl~~とzipファイルの展開用にunzip~~(githubからダウンロードしたスクリプトzipを除き7-zipで展開するようにしました)を使っています。インストール後のbashの使用にも対応しました。
 
 ### cUrl
 

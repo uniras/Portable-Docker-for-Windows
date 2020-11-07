@@ -1,0 +1,25 @@
+;Telnet接続を利用してAlpine Linuxをシャットダウンするマクロ
+
+;環境変数を展開して設定を反映
+expandenv host "localhost:%QEMU_SERIAL_PORT% /nossh /T=1"
+expandenv haltcommand "%HALTCOMMAND%"
+
+;接続
+connect host
+
+if result <> 2 then 
+    ;接続に失敗したので異常終了
+    setexitcode -1
+    end
+endif
+
+;ターミナル非表示
+showtt -1
+
+;シャットダウンコマンド送信
+sendln haltcommand
+
+;正常終了
+setexitcode 0
+
+end

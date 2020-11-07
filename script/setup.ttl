@@ -5,6 +5,7 @@ expandenv host "localhost:%QEMU_SERIAL_PORT% /nossh /T=1"
 expandenv setupscript "%SCRIPTDIR%\setup.sh"
 expandenv loginprompt "%LINUX_SETUP_HOSTNAME% login:"
 expandenv prompt "%LINUX_SETUP_HOSTNAME%:"
+expandenv haltcommand "%HALTCOMMAND%"
 
 ;念のため3秒待つ
 pause 3
@@ -23,7 +24,7 @@ wait prompt
 ;セットアップ用のシェルスクリプトをローカルから読み込んでcatコマンドでリモートに書き込み
 fileopen fh setupscript 0
 
-sendln "cat << EOF > setup.sh"
+sendln "cat << TTLEOF > ./setup.sh"
 
 while 1
     filereadln fh buf
@@ -34,22 +35,22 @@ while 1
     sendln exbuf
 endwhile
 
-sendln "EOF"
+sendln "TTLEOF"
 
 fileclose fh
 
 wait prompt
 
-sendln "sh ~/setup.sh"
+sendln "sh ./setup.sh"
 
 wait prompt
 
-sendln "rm ~/setup.sh"
+sendln "rm ./setup.sh"
 
 wait prompt
 
 ;セットアップが終わったのでシャットダウン
-sendln "poweroff"
+sendln haltcommand
 
 ;Telnet切断 = Qemu終了まで待つ
 waitevent 4

@@ -2,6 +2,7 @@
 
 ;環境変数を展開して設定を反映
 expandenv host "localhost:%QEMU_SERIAL_PORT% /nossh /T=1"
+expandenv haltcommand "%HALTCOMMAND%"
 
 ;接続
 connect host
@@ -14,6 +15,9 @@ endif
 
 ;ターミナル非表示
 showtt -1
+
+;シャットダウンコマンド送信
+sendln haltcommand
 
 ;Telnet切断 = Qemu終了まで待つ
 waitevent 4

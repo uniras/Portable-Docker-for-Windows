@@ -31,6 +31,9 @@ sleep 10
 docker volume create portainer_data
 docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 
+#Install Webdav Server
+docker run -d -p 80:80 --name webdav --restart=always -e AUTH_TYPE=Digest -e USERNAME=user -e PASSWORD=abcdefg -e ANONYMOUS_METHODS=ALL -v /root:/var/lib/dav/data bytemark/webdav
+
 #Download webmin.
 echo Downloading webmin-%WEBMIN_VERSION%.tar.gz...
 curl -sL https://prdownloads.sourceforge.net/webadmin/webmin-%WEBMIN_VERSION%.tar.gz \
@@ -44,7 +47,7 @@ rm -rf webmin-%WEBMIN_VERSION%.tar.gz
 cd /var/lib/webmin
 
 #Execute Setup Script.
-cat << EOG | ./setup.sh
+cat << EOF | ./setup.sh
 /etc/webmin
 /var/log/webmin
 /usr/bin/perl
@@ -53,14 +56,14 @@ admin
 
 
 y
-EOG
+EOF
 
-#Write Shellscript Files.
-cat << EOG > /etc/init.d/webmin
+#Write Startup Shellscript Files.
+cat << EOF > /etc/init.d/webmin
 #!/sbin/openrc-run
 start() { /etc/webmin/start; }
 stop() { /etc/webmin/stop; }
-EOG
+EOF
 
 #Setting Startup.
 chmod a+x /etc/init.d/webmin

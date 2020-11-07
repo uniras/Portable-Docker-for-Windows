@@ -5,6 +5,7 @@ expandenv host "localhost:%QEMU_SERIAL_PORT% /nossh /T=1"
 expandenv answerfile "%SCRIPTDIR%\answerfile"
 expandenv loginprompt "%LINUX_INSTALL_HOSTNAME% login:"
 expandenv prompt "%LINUX_INSTALL_HOSTNAME%:"
+expandenv haltcommand "%HALTCOMMAND%"
 
 ;念のため3秒待つ
 pause 3
@@ -22,7 +23,7 @@ wait prompt
 ;ローカルのanswerfileを読み込んでcatコマンドでリモートに書き込み
 fileopen fh answerfile 0
 
-sendln "cat << EOF > answerfile"
+sendln "cat << TTLEOF > answerfile"
 
 while 1
     filereadln fh buf
@@ -32,7 +33,7 @@ while 1
     sendln buf
 endwhile
 
-sendln "EOF"
+sendln "TTLEOF"
 
 fileclose fh
 
@@ -49,7 +50,7 @@ sendln "y"
 wait prompt
 
 ;インストールが終了したのでシャットダウン
-sendln "poweroff"
+sendln haltcommand
 
 ;Telnet切断 = Qemu終了まで待つ
 waitevent 4

@@ -21,6 +21,9 @@ set QEMU_CLOCK_OPT=-rtc clock=vm,base=utc
 : QEMUで使用するメモリ量(MB単位)
 set QEMU_USE_MEMORY=2048
 
+: QEMUで使用するプロセッサ数
+set QENU_USE_PROCESSOR=2
+
 : HDDファイルのパス
 set QEMU_HDD_PATH=Linux.qcow2
 

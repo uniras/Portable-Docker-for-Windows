@@ -12,9 +12,9 @@ echo '#/media/cdrom/apks' > /etc/apk/repositories
 echo 'http://dl-cdn.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories
 echo 'http://dl-cdn.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories
 
-#Install Docker, Docker-Compose and webmin must packages. 
+#Install Docker, Docker-Compose, webmin and Docker Expose Plugin must packages. 
 apk update
-apk add docker docker-compose curl perl
+apk add docker docker-compose curl perl bash
 
 #Enable connection from Docker CLI for Windows.
 mkdir /etc/docker/
@@ -69,3 +69,10 @@ EOF
 chmod a+x /etc/init.d/webmin
 
 rc-update add webmin boot
+
+#Download and Install Docker Expose Plugin
+mkdir -p ~/.docker/cli-plugins
+
+curl -sf %DOCKER_EXPOSE_PLUGIN_URL% -o ~/.docker/cli-plugins/docker-clip
+
+chmod +x ~/.docker/cli-plugins/docker-clip

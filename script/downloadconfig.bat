@@ -8,6 +8,7 @@ set SEVENZ_URL="https://ja.osdn.net/frs/redir.php?m=jaist&f=sevenzip%%2F70662%%2
 set TERATERM_URL="https://ja.osdn.net/frs/redir.php?m=jaist&f=ttssh2%%2F72009%%2Fteraterm-4.105.zip"
 set DOCKERCLI_URL="https://github.com/StefanScherer/docker-cli-builder/releases/download/19.03.12/docker.exe"
 set DOCKERCMP_URL="https://github.com/docker/compose/releases/download/1.27.4/docker-compose-Windows-x86_64.exe"
+set DOCKER_EXPOSE_PLUGIN_URL="https://raw.githubusercontent.com/lukaszlach/clip/master/docker-clip"
 set WEBMIN_VERSION=1.960
 
 :各種ソフトウェアのパス

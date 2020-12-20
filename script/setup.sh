@@ -76,3 +76,5 @@ mkdir -p ~/.docker/cli-plugins
 curl -sf %DOCKER_EXPOSE_PLUGIN_URL% -o ~/.docker/cli-plugins/docker-clip
 
 chmod +x ~/.docker/cli-plugins/docker-clip
+
+docker clip add lukaszlach/clips:expose

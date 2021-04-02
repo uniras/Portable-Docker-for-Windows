@@ -181,7 +181,7 @@ Dockerです。これをポータブルに動かすためのスクリプトな�
 
 ### bash (現在はインストールしません)
 
-~~ 後述のdocker exposeプラグインの実体はbashスクリプトなのでインストールされています。 ~~ 
+~~後述のdocker exposeプラグインの実体はbashスクリプトなのでインストールされています。~~
 docker exposeプラグインをインストールしなくなったのでこれもインストールしません。
 
 ### Portainer(portainer/portainer-ce)

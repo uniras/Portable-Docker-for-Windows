@@ -43,7 +43,7 @@ wait prompt
 sendln "setup-alpine -e -f answerfile"
 
 ;書き込みOKの入力待ちは省略できないっぽいのでマクロで入力
-wait "continue? [y/N]:"
+wait "continue? (y/n) [n]"
 
 sendln "y"
 

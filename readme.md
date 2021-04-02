@@ -179,9 +179,10 @@ Dockerです。これをポータブルに動かすためのスクリプトな�
 
 後述のwebminを動作させるために必要なのでインストールされています。
 
-### bash
+### bash (現在はインストールしません)
 
-後述のdocker exposeプラグインの実体はbashスクリプトなのでインストールされています。
+~~ 後述のdocker exposeプラグインの実体はbashスクリプトなのでインストールされています。 ~~ 
+docker exposeプラグインをインストールしなくなったのでこれもインストールしません。
 
 ### Portainer(portainer/portainer-ce)
 
@@ -197,9 +198,10 @@ webdavサーバーを実現するDockerコンテナです。windowsエクスプ�
 
 webブラウザで動くLinux管理ツールです。windows上のwebブラウザからは```http://localhost:10000/```でアクセスできます。ユーザー名はadmin、パスワードは無しに設定されています。正直なところいろいろ不安定なんですが、代替がないようなので…
 
-###  docker exposeプラグイン
+###  docker exposeプラグイン(現在はインストールしません)
 
-[ngrok](https://ngrok.com/docs)というサービスを利用して本来外部から接続できない環境下でコンテナ上のサーバーをインターネット上に公開できるようにするDocker CLIプラグインです。使い方は[ここ](https://qiita.com/tksarah/items/9e46d131107d3e15f7bc)を参照してください。
+~~[ngrok](https://ngrok.com/docs)というサービスを利用して本来外部から接続できない環境下でコンテナ上のサーバーをインターネット上に公開できるようにするDocker CLIプラグインです。使い方は[ここ](https://qiita.com/tksarah/items/9e46d131107d3e15f7bc)を参照してください。~~
+わざわざこういうのを入れなくても必要なら素のngrok入れればいいんじゃないかと思ったのでインストールしないようにしました。
 
 ## セキュリティ
 
